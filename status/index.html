@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RDS Mission Control</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --mc-bg: var(--oc-bg, #ffffff);
+        --mc-fg: var(--oc-fg, #111111);
+        --mc-muted: var(--oc-muted, #6b7280);
+        --mc-border: var(--oc-border, #e5e7eb);
+        --mc-hover: var(--oc-hover, rgba(0, 0, 0, 0.04));
+        --mc-subtle: var(--oc-subtle, #f9fafb);
+        --mc-primary: var(--oc-primary, #2563eb);
+        --mc-primary-fg: var(--oc-primary-fg, #ffffff);
+        --mc-radius: var(--oc-radius, 8px);
+        --mc-font: var(--oc-font, system-ui, -apple-system, "Segoe UI", sans-serif);
+        --mc-mono: var(--oc-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+        --mc-success: #10b981;
+        --mc-warning: #f59e0b;
+        --mc-danger: #ef4444;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--mc-font);
+        font-size: 12px;
+        line-height: 1.45;
+        color: var(--mc-fg);
+        background: transparent;
+      }
+
+      #root {
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .section {
+        background: var(--mc-subtle);
+        border: 1px solid var(--mc-border);
+        border-radius: var(--mc-radius);
+        padding: 8px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .section-header {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--mc-muted);
+        border-bottom: 1px solid var(--mc-border);
+        padding-bottom: 3px;
+      }
+
+      /* Section 1: Monitoring */
+      .telemetry-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .telemetry-item {
+        display: flex;
+        flex-direction: column;
+        background: var(--mc-bg);
+        border: 1px solid var(--mc-border);
+        border-radius: calc(var(--mc-radius) - 2px);
+        padding: 4px 6px;
+      }
+
+      .telemetry-item label {
+        font-size: 9px;
+        color: var(--mc-muted);
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 2px;
+        text-align: center;
+        background: var(--mc-hover);
+        color: var(--mc-fg);
+      }
+
+      .phase-m0_explore { background: #dbeafe; color: #1e40af; }
+      .phase-m1_propose { background: #e0e7ff; color: #3730a3; }
+      .phase-m2_stage { background: #fae8ff; color: #86198f; }
+      .phase-m3_execute { background: #dcfce7; color: #166534; }
+      .phase-m4_audit { background: #fef9c3; color: #854d0e; }
+      .phase-m5_sensitive { background: #fee2e2; color: #991b1b; }
+
+      .impact-t0 { background: #f3f4f6; color: #374151; }
+      .impact-t1 { background: #e0f2fe; color: #075985; }
+      .impact-t2 { background: #fef3c7; color: #92400e; }
+      .impact-t3 { background: #fed7aa; color: #9a3412; }
+      .impact-t4 { background: #fbcfe8; color: #9d174d; }
+      .impact-t5 { background: #fecaca; color: #991b1b; }
+
+      .pending-banner {
+        background: #fdf4ff;
+        border: 1px solid #f0abfc;
+        color: #86198f;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 10.5px;
+        font-weight: 600;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .status-row {
+        font-size: 11px;
+        display: flex;
+        gap: 6px;
+        color: var(--mc-fg);
+      }
+      .status-row label {
+        color: var(--mc-muted);
+        font-weight: 600;
+      }
+
+      /* Section 2: Config */
+      .config-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .config-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .config-item label {
+        font-size: 9px;
+        color: var(--mc-muted);
+        font-weight: 600;
+      }
+
+      .config-item select, .config-item input {
+        background: var(--mc-bg);
+        border: 1px solid var(--mc-border);
+        border-radius: 4px;
+        padding: 3px 4px;
+        font: inherit;
+        font-size: 10.5px;
+        color: var(--mc-fg);
+      }
+
+      .primary-btn {
+        background: var(--mc-primary);
+        color: var(--mc-primary-fg);
+        border: none;
+        border-radius: 4px;
+        padding: 5px 8px;
+        font: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 4px;
+        transition: opacity 100ms ease;
+      }
+      .primary-btn:hover { opacity: 0.9; }
+      .primary-btn:active { transform: translateY(1px); }
+
+      /* Section 3: Launcher */
+      .launcher-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+      }
+
+      .launcher-btn {
+        background: var(--mc-bg);
+        border: 1px solid var(--mc-border);
+        border-radius: 4px;
+        padding: 5px 8px;
+        font: inherit;
+        font-size: 10.5px;
+        font-weight: 600;
+        color: var(--mc-fg);
+        cursor: pointer;
+        text-align: left;
+        transition: background 150ms ease, border-color 150ms ease;
+      }
+      .launcher-btn:hover {
+        background: var(--mc-hover);
+        border-color: var(--mc-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
