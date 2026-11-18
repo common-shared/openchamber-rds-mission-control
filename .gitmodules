@@ -1,0 +1,3 @@
+[submodule ".claude/skills/repository-documentation"]
+	path = .claude/skills/repository-documentation
+	url = git@github.com:FeriX86/rds.git
