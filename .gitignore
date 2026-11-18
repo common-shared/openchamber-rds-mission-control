@@ -3,3 +3,13 @@ node_modules/
 *.log
 .DS_Store
 dist/
+
+# ------------------------------------------------------------------------------
+# Repository Document Standard (RDS) & OpenCode/GSD Workspace Exclusions
+# ------------------------------------------------------------------------------
+.planning/
+.opencode/
+.opencode-worktrees/
+OUTPUT.json
+contract.json
+.rds/worker-output.json

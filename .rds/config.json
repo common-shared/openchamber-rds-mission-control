@@ -1,0 +1,15 @@
+{
+  "$schema": ".claude/skills/repository-documentation/schemas/consumer-config.schema.json",
+  "rds_version": "0.8.5",
+  "opt_in": true,
+  "enabled_types": [
+    "architecture",
+    "decisions",
+    "operations",
+    "research",
+    "handoffs",
+    "specifications"
+  ],
+  "exclusions": [],
+  "opt_out": false
+}
