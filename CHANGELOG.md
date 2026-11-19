@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-11-19
+
+### Fixed
+- **Multi-Source Real-Time Telemetry Synchronization:** Resolved bug where monitoring panel displayed uninitialized fallback defaults (`M0_EXPLORE`, `T0_INFORMATIONAL`, `Gear 1 [AUTO]`, `dev`, `--/--`) when agent mode was `AUTO`.
+- **Bidirectional OpenCode Plugin Sync:** Updated `opencode-rds-enforcer.js` to automatically synchronize prompt-classified Cognitive Phase (M0–M5), Task Impact Class (T0–T5), and inferred Gear into both workspace-local `.openchamber/rds-mission-control/<sessionId>.json` and global `~/.openchamber/rds-mission-control/<sessionId>.json`.
+- **SDK Workspace Session Telemetry:** Subscribed to OpenChamber SDK workspace session updates (`listProjects()`, `listSessions()`, `onSessions()`) to capture live token context consumption, active tool execution, and worktree branches directly from OpenChamber.
+- **Project & Git Live Probing:** Added direct probes for `.rds/config.json` bootstrap validation and `.git` / `.git/HEAD` worktree branch resolution.
+- **Real-Time UDIS Inference Fallback:** In the absence of an on-disk store, `status/main.ts` now deterministically infers the active Cognitive Phase and Impact Class from active session titles and task focus goals.
+- **Permission & Capability Expansion:** Added `contributes.filesystem` permissions (`["~/.openchamber/**", "/tmp/opencode/**"]`) in `package.json` to allow full access to OpenChamber runtime stores.
+
+### Added
+- Comprehensive test suite in `tests/store.test.ts` covering path resolution, document mutations, parsing fallbacks, and deterministic UDIS prompt classification.
+
 ## [0.2.0] - 2026-11-19
 
 ### Added

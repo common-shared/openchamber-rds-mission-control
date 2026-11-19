@@ -1,11 +1,11 @@
 /* Built from status/main.ts */
 "use strict";
 (() => {
-  // node_modules/@openchamber/sdk/dist/api-version.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/api-version.js
   var OPENCHAMBER_SDK_CHANNEL = "openchamber.sdk";
   var OPENCHAMBER_SDK_API_VERSION = 1;
 
-  // node_modules/@openchamber/sdk/dist/scrollbar-style.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/scrollbar-style.js
   var GUEST_SCROLLING_ATTRIBUTE = "data-oc-scrolling";
   var GUEST_SCROLLBAR_CSS = `
 :root {
@@ -65,15 +65,15 @@
   }
   var GUEST_SCROLLBAR_SCRIPT = `(${installGuestScrollbarActivity.toString()})(document);`;
 
-  // node_modules/@openchamber/sdk/dist/workspace.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/workspace.js
   var GUEST_STORAGE_KEY_MAX = 128;
   var GUEST_STORAGE_VALUE_BYTES = 65536;
 
-  // node_modules/@openchamber/sdk/dist/shells.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/shells.js
   var GUEST_SHELL_ID_MAX = 128;
   var GUEST_SHELL_OUTPUT_TAIL_MAX = 65536;
 
-  // node_modules/@openchamber/sdk/dist/microphone.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/microphone.js
   var GUEST_MICROPHONE_SAMPLE_RATE_MIN = 8e3;
   var GUEST_MICROPHONE_SAMPLE_RATE_MAX = 192e3;
   var GUEST_MICROPHONE_OPEN_TIMEOUT_MS = 12e4;
@@ -119,7 +119,7 @@
     };
   };
 
-  // node_modules/@openchamber/sdk/dist/status-controls.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/status-controls.js
   var GUEST_STATUS_CONTROLS_MAX = 4;
   var GUEST_STATUS_CONTROL_ID = /^[a-z][a-z0-9-]{0,39}$/;
   var GUEST_STATUS_CONTROL_LABEL_MAX = 60;
@@ -162,12 +162,12 @@
     return true;
   };
 
-  // node_modules/@openchamber/sdk/dist/manifest.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/manifest.js
   var GUEST_PROVIDER_LOGO_BYTES_MAX = 1024 * 1024;
   var TRACKER_URL_TOKENS = ["{id}", "{segment}", "{segments+}"];
   var TRACKER_URL_TOKEN_SET = new Set(TRACKER_URL_TOKENS);
 
-  // node_modules/@openchamber/sdk/dist/session-events.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/session-events.js
   var GUEST_SESSION_EVENT_TYPES = [
     "turn-finished",
     "turn-failed",
@@ -181,11 +181,11 @@
   var SESSION_EVENTS_IDLE_MS = 10 * 6e4;
   var EVENT_TYPES = new Set(GUEST_SESSION_EVENT_TYPES);
 
-  // node_modules/@openchamber/sdk/dist/service-host.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-host.js
   var SERVICE_SCHEDULE_IDLE_MS = 10 * 6e4;
   var MENTIONS_IDLE_MS = 10 * 6e4;
 
-  // node_modules/@openchamber/sdk/dist/file-editor.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/file-editor.js
   var GUEST_FILE_EDITOR_CONTENT_MAX = 2e7;
   var GUEST_FILE_EDITOR_VERSION_MAX = 256;
   var fileEditorPayloadSize = (value) => "bytes" in value ? value.bytes.byteLength : value.content.length;
@@ -204,7 +204,7 @@
     return true;
   };
 
-  // node_modules/@openchamber/sdk/dist/popover.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/popover.js
   var GUEST_POPOVER_ID = /^[A-Za-z0-9_-]{1,80}$/;
   var GUEST_POPOVER_COORDINATE_MAX = 1e5;
   var GUEST_POPOVER_WIDTH_MIN = 160;
@@ -247,7 +247,7 @@
     }
   };
 
-  // node_modules/@openchamber/sdk/dist/contract.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/contract.js
   var GUEST_BLOCK_ANSWER_MAX = 2e3;
   var GUEST_FILE_STAT_KINDS = ["file", "directory", "other", "missing"];
   var isStartSessionResult = (value) => Boolean(value && "sessionId" in value);
@@ -466,7 +466,7 @@
     return wire;
   };
 
-  // node_modules/@openchamber/sdk/dist/host.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/host.js
   var isKeyEvent = (event) => "key" in event && "metaKey" in event && "ctrlKey" in event;
   var isSaveShortcut = (event) => (event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && event.key.toLowerCase() === "s";
   var HostRequestError = class extends Error {
@@ -1552,7 +1552,7 @@
     };
   };
 
-  // node_modules/@openchamber/sdk/dist/service-providers.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-providers.js
   var BROWSER_CONTROL_ACTIONS = [
     "browser.open",
     "browser.snapshot",
@@ -1574,11 +1574,11 @@
   var TRACKER_PROVIDER_IDLE_MS = 10 * 6e4;
   var QUOTA_PROVIDER_IDLE_MS = 10 * 6e4;
 
-  // node_modules/@openchamber/sdk/dist/service-surface.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-surface.js
   var SURFACE_CONTROLLERS = ["none", "agent", "user"];
   var CONTROLLERS = new Set(SURFACE_CONTROLLERS);
 
-  // node_modules/@openchamber/sdk/dist/ui/theme.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/ui/theme.js
   var TOKEN_VARS = [
     ["--oc-bg", "background"],
     ["--oc-elevated", "elevated"],
@@ -1668,7 +1668,7 @@
     }
   };
 
-  // node_modules/@openchamber/sdk/dist/ui/style.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/ui/style.js
   var OC_ALIAS = {
     "surface-background": "bg",
     "surface-elevated": "elevated",
@@ -1980,7 +1980,8 @@ ${UI_SIZE_CSS}
 ${GUEST_UI_LOOK_CSS}`;
 
   // shared/store.ts
-  var storePath = (sessionId2) => `.openchamber/rds-mission-control/${sessionId2}.json`;
+  var projectStorePath = (sessionId2) => `.openchamber/rds-mission-control/${sessionId2}.json`;
+  var globalStorePath = (sessionId2) => `~/.openchamber/rds-mission-control/${sessionId2}.json`;
   function createInitialDoc(sessionId2) {
     return {
       sessionId: sessionId2,
@@ -2005,6 +2006,112 @@ ${GUEST_UI_LOOK_CSS}`;
     };
   }
   var INITIAL_DOC = createInitialDoc();
+  function classifyPromptPhase(text) {
+    if (!text || typeof text !== "string") {
+      return "M0_EXPLORE";
+    }
+    const lower = text.toLowerCase();
+    const m5Patterns = [
+      /\b(production\s+deploy|deploy\s+(to\s+)?prod(uction)?)\b/,
+      /\b(drop\s+database|drop\s+table|purge\s+database|truncate\s+table)\b/,
+      /\b(systemctl\s+(stop|disable|restart|reload)|service\s+\w+\s+(stop|restart))\b/,
+      /\b(rm\s+-[rR]f\s+(\/|~\/workspace\/repos))\b/,
+      /\b(delete\s+(repository|repo)\s+[\w-]+)\b/,
+      /\b(private\s+key|aws_secret_access_key|token_transfer)\b/
+    ];
+    if (m5Patterns.some((rx) => rx.test(lower))) {
+      return "M5_SENSITIVE";
+    }
+    const m0Patterns = [
+      /\b(explore|brainstorm|ideat(e|ion)|what\s+if|socratic|spike|sketch|discuss|thoughts\s+on|compare\s+(options|alternatives)|look\s+into)\b/,
+      /\b(how\s+should\s+we|options\s+for|trade-offs?|pros\s+and\s+cons|brainstorming)\b/,
+      /\bopenspec\s+explore\b/
+    ];
+    if (m0Patterns.some((rx) => rx.test(lower))) {
+      return "M0_EXPLORE";
+    }
+    const m1Patterns = [
+      /\b(propose|proposal|design\s+contract|spec\s+delta|openspec\s+(propose|new|change)|rfc|change\s+proposal)\b/
+    ];
+    if (m1Patterns.some((rx) => rx.test(lower))) {
+      return "M1_PROPOSE";
+    }
+    const m2Patterns = [
+      /\b(define\s+version|stage\s+milestone|release\s+charter|group\s+proposals|milestone\s+aims|set\s+goals|roadmap\s+for|next\s+version)\b/,
+      /\b(release\s+v\d+\.\d+\.\d+|stage\s+v\d+\.\d+\.\d+)\b/
+    ];
+    if (m2Patterns.some((rx) => rx.test(lower))) {
+      return "M2_STAGE";
+    }
+    const m4Patterns = [
+      /\b(audit|doctor|drift|diagnos(e|tics)|check-policy|validate|health\s+check)\b/
+    ];
+    if (m4Patterns.some((rx) => rx.test(lower))) {
+      return "M4_AUDIT";
+    }
+    return "M3_EXECUTE";
+  }
+  function classifyPromptImpact(text) {
+    if (!text || typeof text !== "string") {
+      return "T0_INFORMATIONAL";
+    }
+    const lower = text.toLowerCase();
+    const t5Patterns = [
+      /\b(production\s+deploy|deploy\s+(to\s+)?prod(uction)?)\b/,
+      /\b(drop\s+database|drop\s+table|purge\s+database|truncate\s+table)\b/,
+      /\b(systemctl\s+(stop|disable|restart|reload)|service\s+\w+\s+(stop|restart))\b/,
+      /\b(rm\s+-[rR]f\s+(\/|~\/workspace\/repos))\b/,
+      /\b(delete\s+(repository|repo)\s+[\w-]+)\b/,
+      /\b(private\s+key|aws_secret_access_key|token_transfer)\b/
+    ];
+    if (t5Patterns.some((rx) => rx.test(lower))) {
+      return "T5_OPERATIONAL_SENSITIVE";
+    }
+    const t4Patterns = [
+      /\b(programme|fleet|rollout|multi-phase|phases?\s+\d+\s+to\s+\d+|milestone|across\s+all\s+\d+\s+repos)\b/
+    ];
+    if (t4Patterns.some((rx) => rx.test(lower))) {
+      return "T4_MULTI_PHASE";
+    }
+    const t3DirectPatterns = [
+      /\b(feature|architectur(e|al)|schema\s+migration|database\s+migration|public\s+api|new\s+system|new\s+endpoint|redesign|refactor\s+subsystem|microservice)\b/
+    ];
+    if (t3DirectPatterns.some((rx) => rx.test(lower))) {
+      return "T3_FEATURE_CHANGE";
+    }
+    const mutationPatterns = [
+      /\b(implement|create|write|modify|edit|update|fix|refactor|delete|remove|add|scaffold|build|migrate|bump|release|ship|patch|rollout|adopt|upgrade|onboard|execute|run)\b/
+    ];
+    if (mutationPatterns.some((rx) => rx.test(lower))) {
+      return "T2_SMALL_CHANGE";
+    }
+    const repoQueryPatterns = [
+      /\b(explain|where\s+is|how\s+does|inspect|search|grep|read|review|find|check|audit|diff|status|doctor|validate)\b/,
+      /\.(ts|js|py|json|md|yaml|yml|go|rs|c|cpp|sh)\b/,
+      /\b(function|class|method|module|component|test|variable|file|dir|path)\b/
+    ];
+    if (repoQueryPatterns.some((rx) => rx.test(lower))) {
+      return "T1_READ_ONLY_REPO";
+    }
+    return "T0_INFORMATIONAL";
+  }
+  function deriveGearFromTriad(impact, phase) {
+    if (phase === "M5_SENSITIVE" || impact === "T5_OPERATIONAL_SENSITIVE") {
+      return 1;
+    }
+    if (impact === "T4_MULTI_PHASE") {
+      return 4;
+    }
+    if (impact === "T3_FEATURE_CHANGE" || phase === "M3_EXECUTE") {
+      if (impact === "T2_SMALL_CHANGE") return 2;
+      if (impact === "T3_FEATURE_CHANGE") return 3;
+      return 2;
+    }
+    if (impact === "T1_READ_ONLY_REPO" || phase === "M4_AUDIT" || phase === "M1_PROPOSE" || phase === "M2_STAGE") {
+      return 2;
+    }
+    return 1;
+  }
 
   // status/card.ts
   function createCard(root2, handlers) {
@@ -2355,18 +2462,33 @@ Directives: Session Wrapup Protocol & As-Built Reconciliation Loop (DP-0008).`
         impactBadge.className = `badge impact-${doc.active.impact.toLowerCase().split("_")[0]}`;
         const isDocAuto = doc.active.mode === "AUTO";
         gearBadge.textContent = `Gear ${doc.active.gear}${isDocAuto ? " [AUTO]" : ""}`;
-        rdsBadge.textContent = doc.active.rdsStatus || "ENFORCED";
-        branchBadge.textContent = doc.active.branch || "dev";
-        if (doc.active.branch) {
-          branchBadge.setAttribute("title", `Git Branch: ${doc.active.branch}`);
-        }
+        const rdsStatus = doc.active.rdsStatus || "ENFORCED";
+        rdsBadge.textContent = rdsStatus.replace(/_/g, " ");
+        rdsBadge.className = `badge rds-${rdsStatus.toLowerCase().replace(/_/g, "-")}`;
+        rdsBadge.setAttribute("title", `RDS Bootstrap Status: ${rdsStatus}`);
+        const branchName = doc.active.branch || "dev";
+        branchBadge.textContent = doc.active.isWorktree ? `wt:${branchName}` : branchName;
+        branchBadge.setAttribute(
+          "title",
+          doc.active.isWorktree ? `Worktree: ${branchName}` : `Git Branch: ${branchName}`
+        );
         if (doc.active.contextTokens) {
           const { used, limit } = doc.active.contextTokens;
-          const usedK = Math.round(used / 1e3);
-          const limitK = Math.round(limit / 1e3);
-          contextBadge.textContent = `${usedK}k / ${limitK}k`;
+          const formatK = (n) => {
+            if (n >= 1e6) return `${(n / 1e6).toFixed(1)}M`;
+            if (n >= 1e4) return `${Math.round(n / 1e3)}k`;
+            if (n >= 1e3) return `${(n / 1e3).toFixed(1)}k`;
+            return `${n}`;
+          };
+          const pct = limit > 0 ? Math.round(used / limit * 100) : 0;
+          contextBadge.textContent = `${formatK(used)} / ${formatK(limit)}`;
+          contextBadge.setAttribute(
+            "title",
+            `Context Window: ${used.toLocaleString()} / ${limit.toLocaleString()} tokens (${pct}%)`
+          );
         } else {
           contextBadge.textContent = "-- / --";
+          contextBadge.removeAttribute("title");
         }
         const activitySpan = root2.querySelector("#val-activity");
         const toolInfo = doc.active.activeTool ? `${doc.active.activeTool.name} ${doc.active.activeTool.target || ""}` : null;
@@ -2434,8 +2556,11 @@ Directives: Session Wrapup Protocol & As-Built Reconciliation Loop (DP-0008).`
   var root = document.querySelector("#root");
   var sessionId = null;
   var sessionTitle = null;
+  var latestFocusGoal = null;
   var currentDoc = createInitialDoc();
   var sessionDocCache = /* @__PURE__ */ new Map();
+  var knownSessions = /* @__PURE__ */ new Map();
+  var projectUnsubs = /* @__PURE__ */ new Map();
   var PROMPT_TEMPLATES = {
     M0_EXPLORE: `[M0_EXPLORE / T0_INFORMATIONAL / Gear 1]
 Goal: Brainstorm and explore alternatives for [TOPIC].
@@ -2456,7 +2581,39 @@ Directives: Run rds doctor --fleet, rds drift, and rds validate.`,
 Goal: Execute sensitive operational task for [TARGET].
 Rules: Native Question tool authorization gate before touching credentials or infrastructure.`
   };
+  async function probeRdsStatus() {
+    try {
+      const res = await host.readFile(".rds/config.json");
+      try {
+        const cfg = JSON.parse(res.content);
+        if (cfg && (cfg.rds_version || cfg.schema_version)) {
+          return "ENFORCED";
+        }
+        return "ENFORCED_WITH_WARNINGS";
+      } catch {
+        return "DEGRADED_READ_ONLY";
+      }
+    } catch {
+      try {
+        await host.readFile(".git/HEAD");
+        return "UNMANAGED_REPOSITORY";
+      } catch {
+        try {
+          const git = await host.readFile(".git");
+          if (git.content.startsWith("gitdir:")) {
+            return "UNMANAGED_REPOSITORY";
+          }
+        } catch {
+        }
+        return "UNMANAGED_REPOSITORY";
+      }
+    }
+  }
   async function probeGitBranch() {
+    const rec = sessionId ? knownSessions.get(sessionId) : null;
+    if (rec?.worktree?.branch) {
+      return { branch: rec.worktree.branch, isWorktree: true };
+    }
     try {
       const res = await host.readFile(".git");
       if (res.content.startsWith("gitdir:")) {
@@ -2477,7 +2634,7 @@ Rules: Native Question tool authorization gate before touching credentials or in
       return { branch: "dev", isWorktree: false };
     }
   }
-  async function probeFocusProgress() {
+  async function probeFocusProgress(sid) {
     try {
       const res = await host.readFile(".planning/STATE.md");
       const matches = res.content.match(/- \[(x|X| )\]/g);
@@ -2492,6 +2649,31 @@ Rules: Native Question tool authorization gate before touching credentials or in
       }
     } catch {
     }
+    const focusPaths = [
+      `.openchamber/session-focus/${sid}.json`,
+      `~/.openchamber/session-focus/${sid}.json`
+    ];
+    for (const p of focusPaths) {
+      try {
+        const res = await host.readFile(p);
+        const parsed = JSON.parse(res.content);
+        if (parsed) {
+          if (parsed.focus && typeof parsed.focus === "string") {
+            latestFocusGoal = parsed.focus;
+          }
+          if (Array.isArray(parsed.actions) && parsed.actions.length > 0) {
+            const total = parsed.actions.length;
+            const done = parsed.actions.filter((a) => a.state === "done" || a.state === "dropped").length;
+            return {
+              done,
+              total,
+              percentage: Math.round(done / total * 100)
+            };
+          }
+        }
+      } catch {
+      }
+    }
     return void 0;
   }
   async function readStore() {
@@ -2499,21 +2681,29 @@ Rules: Native Question tool authorization gate before touching credentials or in
       return createInitialDoc();
     }
     try {
-      const res = await host.readFile(storePath(sessionId));
+      const res = await host.readFile(projectStorePath(sessionId));
       const parsed = JSON.parse(res.content);
-      sessionDocCache.set(sessionId, parsed);
-      return parsed;
-    } catch (err) {
-      if (err instanceof HostRequestError && err.code === "NOT_FOUND") {
-        if (sessionDocCache.has(sessionId)) {
-          return sessionDocCache.get(sessionId);
-        }
-        const freshDoc = createInitialDoc(sessionId);
-        sessionDocCache.set(sessionId, freshDoc);
-        return freshDoc;
+      if (parsed && parsed.active) {
+        sessionDocCache.set(sessionId, parsed);
+        return parsed;
       }
-      return sessionDocCache.get(sessionId) || createInitialDoc(sessionId);
+    } catch {
     }
+    try {
+      const res = await host.readFile(globalStorePath(sessionId));
+      const parsed = JSON.parse(res.content);
+      if (parsed && parsed.active) {
+        sessionDocCache.set(sessionId, parsed);
+        return parsed;
+      }
+    } catch {
+    }
+    if (sessionDocCache.has(sessionId)) {
+      return sessionDocCache.get(sessionId);
+    }
+    const freshDoc = createInitialDoc(sessionId);
+    sessionDocCache.set(sessionId, freshDoc);
+    return freshDoc;
   }
   async function writeStore(doc) {
     if (!sessionId) return;
@@ -2522,9 +2712,80 @@ Rules: Native Question tool authorization gate before touching credentials or in
     sessionDocCache.set(sessionId, doc);
     const content = JSON.stringify(doc, null, 2);
     try {
-      await host.writeFile(storePath(sessionId), content);
+      await host.writeFile(projectStorePath(sessionId), content);
     } catch (err) {
-      console.warn("Could not persist Mission Control doc to disk:", err);
+      console.warn("Could not persist Mission Control doc to project disk:", err);
+    }
+    try {
+      await host.writeFile(globalStorePath(sessionId), content);
+    } catch {
+    }
+  }
+  function enrichFromSessionRecord(record) {
+    if (!record) return;
+    if (record.context && typeof record.context.tokens === "number") {
+      currentDoc.active.contextTokens = {
+        used: record.context.tokens,
+        limit: record.context.limit ?? 2e5
+      };
+    }
+    if (record.tool && record.tool.name) {
+      currentDoc.active.activeTool = {
+        name: record.tool.name,
+        target: record.tool.target ?? null
+      };
+    } else if (record.activity && record.activity !== "running") {
+      currentDoc.active.activeTool = void 0;
+    }
+    if (record.activity) {
+      currentDoc.status.activity = record.activity;
+      if (record.activity === "running") {
+        const toolPart = record.tool?.name ? `${record.tool.name} ${record.tool.target || ""}`.trim() : "tool";
+        currentDoc.status.detail = `Running: ${toolPart}`;
+      } else if (record.activity === "waiting-question") {
+        currentDoc.status.detail = "Awaiting Operator Decision";
+      } else if (record.activity === "waiting-permission") {
+        currentDoc.status.detail = "Awaiting Permission Approval";
+      } else if (record.activity === "idle") {
+        currentDoc.status.detail = "Ready \u2022 Awaiting prompt";
+      }
+    }
+    if (record.worktree && record.worktree.branch) {
+      currentDoc.active.branch = record.worktree.branch;
+      currentDoc.active.isWorktree = true;
+    }
+  }
+  async function syncWorkspaceSessions() {
+    try {
+      const projectsSnap = await host.listProjects();
+      if (projectsSnap && Array.isArray(projectsSnap.projects)) {
+        for (const proj of projectsSnap.projects) {
+          try {
+            const sessSnap = await host.listSessions(proj.id);
+            if (sessSnap && Array.isArray(sessSnap.sessions)) {
+              for (const s of sessSnap.sessions) {
+                knownSessions.set(s.id, s);
+              }
+            }
+          } catch {
+          }
+          if (!projectUnsubs.has(proj.id)) {
+            try {
+              const unsub = await host.onSessions(proj.id, (sessSnap) => {
+                if (sessSnap && Array.isArray(sessSnap.sessions)) {
+                  for (const s of sessSnap.sessions) {
+                    knownSessions.set(s.id, s);
+                  }
+                  void refresh();
+                }
+              });
+              projectUnsubs.set(proj.id, unsub);
+            } catch {
+            }
+          }
+        }
+      }
+    } catch {
     }
   }
   var card = createCard(root, {
@@ -2616,12 +2877,33 @@ Rules: Native Question tool authorization gate before touching credentials or in
     isRefreshing = true;
     try {
       currentDoc = await readStore();
+      const rec = sessionId ? knownSessions.get(sessionId) : null;
+      if (rec) {
+        enrichFromSessionRecord(rec);
+      }
       const gitInfo = await probeGitBranch();
       currentDoc.active.branch = gitInfo.branch;
       currentDoc.active.isWorktree = gitInfo.isWorktree;
-      const progress = await probeFocusProgress();
-      if (progress) {
-        currentDoc.active.focusProgress = progress;
+      const rdsStatus = await probeRdsStatus();
+      currentDoc.active.rdsStatus = rdsStatus;
+      if (sessionId) {
+        const progress = await probeFocusProgress(sessionId);
+        if (progress) {
+          currentDoc.active.focusProgress = progress;
+        }
+      }
+      if (currentDoc.active.mode === "AUTO") {
+        const candidateText = latestFocusGoal || sessionTitle || rec?.title || "";
+        if (candidateText && candidateText.trim().length > 0) {
+          const inferredPhase = classifyPromptPhase(candidateText);
+          const inferredImpact = classifyPromptImpact(candidateText);
+          const inferredGear = deriveGearFromTriad(inferredImpact, inferredPhase);
+          if (currentDoc.revision === 0 || currentDoc.active.phase === "M0_EXPLORE" && currentDoc.active.impact === "T0_INFORMATIONAL") {
+            currentDoc.active.phase = inferredPhase;
+            currentDoc.active.impact = inferredImpact;
+            currentDoc.active.gear = inferredGear;
+          }
+        }
       }
       card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
     } finally {
@@ -2633,20 +2915,12 @@ Rules: Native Question tool authorization gate before touching credentials or in
     sessionId = session?.id ?? null;
     sessionTitle = session?.title ?? null;
     if (session) {
-      const extSession = session;
-      if (extSession.tool) {
-        currentDoc.active.activeTool = {
-          name: extSession.tool.name,
-          target: extSession.tool.target
-        };
+      if (session.model) {
+        currentDoc.active.model = session.model;
       }
-      if (extSession.activity) {
-        currentDoc.status.activity = extSession.activity;
-        if (extSession.activity === "running") {
-          currentDoc.status.detail = `Running: ${extSession.tool?.name || "tool"}`;
-        } else if (extSession.activity === "waiting-question") {
-          currentDoc.status.detail = "Awaiting Operator Decision";
-        }
+      const rec = sessionId ? knownSessions.get(sessionId) : null;
+      if (rec) {
+        enrichFromSessionRecord(rec);
       } else if (session.busy) {
         currentDoc.status.activity = "running";
         currentDoc.status.detail = "Agent working...";
@@ -2654,17 +2928,9 @@ Rules: Native Question tool authorization gate before touching credentials or in
         currentDoc.status.activity = "idle";
         currentDoc.status.detail = "Ready \u2022 Awaiting prompt";
       }
-      if (session.model) {
-        currentDoc.active.model = session.model;
-      }
-      if (extSession.context) {
-        currentDoc.active.contextTokens = {
-          used: extSession.context.tokens,
-          limit: extSession.context.limit
-        };
-      }
     }
     if (sessionId !== previousId) {
+      latestFocusGoal = null;
       card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
     }
     void refresh();
@@ -2673,10 +2939,17 @@ Rules: Native Question tool authorization gate before touching credentials or in
     applyHostReady(ctx, document.documentElement);
     applySession(ctx.session);
     void host.setHeight(175).catch(() => void 0);
+    void syncWorkspaceSessions();
   });
   host.onSession((session) => {
     applySession(session);
   });
+  try {
+    void host.onProjects?.(() => {
+      void syncWorkspaceSessions();
+    });
+  } catch {
+  }
   host.onSessionLifecycle((event) => {
     if (event.phase === "started" || event.phase === "completed") {
       void refresh();

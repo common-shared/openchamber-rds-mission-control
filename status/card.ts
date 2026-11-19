@@ -405,19 +405,35 @@ export function createCard(root: HTMLElement, handlers: CardHandlers) {
       const isDocAuto = doc.active.mode === "AUTO";
       gearBadge.textContent = `Gear ${doc.active.gear}${isDocAuto ? " [AUTO]" : ""}`;
 
-      rdsBadge.textContent = doc.active.rdsStatus || "ENFORCED";
-      branchBadge.textContent = doc.active.branch || "dev";
-      if (doc.active.branch) {
-        branchBadge.setAttribute("title", `Git Branch: ${doc.active.branch}`);
-      }
+      const rdsStatus = doc.active.rdsStatus || "ENFORCED";
+      rdsBadge.textContent = rdsStatus.replace(/_/g, " ");
+      rdsBadge.className = `badge rds-${rdsStatus.toLowerCase().replace(/_/g, "-")}`;
+      rdsBadge.setAttribute("title", `RDS Bootstrap Status: ${rdsStatus}`);
+
+      const branchName = doc.active.branch || "dev";
+      branchBadge.textContent = doc.active.isWorktree ? `wt:${branchName}` : branchName;
+      branchBadge.setAttribute(
+        "title",
+        doc.active.isWorktree ? `Worktree: ${branchName}` : `Git Branch: ${branchName}`
+      );
 
       if (doc.active.contextTokens) {
         const { used, limit } = doc.active.contextTokens;
-        const usedK = Math.round(used / 1000);
-        const limitK = Math.round(limit / 1000);
-        contextBadge.textContent = `${usedK}k / ${limitK}k`;
+        const formatK = (n: number) => {
+          if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
+          if (n >= 10000) return `${Math.round(n / 1000)}k`;
+          if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+          return `${n}`;
+        };
+        const pct = limit > 0 ? Math.round((used / limit) * 100) : 0;
+        contextBadge.textContent = `${formatK(used)} / ${formatK(limit)}`;
+        contextBadge.setAttribute(
+          "title",
+          `Context Window: ${used.toLocaleString()} / ${limit.toLocaleString()} tokens (${pct}%)`
+        );
       } else {
         contextBadge.textContent = "-- / --";
+        contextBadge.removeAttribute("title");
       }
 
       // Update Activity
