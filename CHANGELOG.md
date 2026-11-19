@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-11-19
+
+### Added
+- **Ergonomic Segmented Tabs:** Ultra-compact tabbed interface (`Monitor`, `Steering`, `Launch`) with dynamic height measurement (`host.setHeight`), reducing vertical screen footprint from 400px to ~150–175px to prevent sidebar crowding.
+- **Auto-by-Default Steering Architecture:** New sessions default to `🤖 AUTO` mode where the coding agent dynamically determines its own Triad Inception state (Gear, Impact, Concurrency). Manual adjustments stage an explicit `👤 MANUAL OVERRIDE`.
+- **Complete Cognitive Archetype Launchers (M0–M5):** Restored missing `M2_STAGE` and `M5_SENSITIVE` session launchers, plus added quick-pick operational presets (`T2 Bugfix`, `Nyquist Tests`, `RDS Doctor`, `As-Built Wrapup`).
+- **Extended Monitoring Telemetry:** Live HUD now displays RDS Governance status (`ENFORCED`), active Git branch / worktree isolation status, token context window meter (`used / limit`), live tool activity (`⚡ edit ...`), and focus action progress bar.
+- **Real-Time Polling & Manual Refresh Button:** Interactive `[🔄]` refresh button with spin feedback, reactive SDK session lifecycle binding, and animated `[🟢 LIVE]` heartbeat.
+- **Session Isolation & Multi-Session Window Support:** Strict per-session cache isolation keyed by `sessionId`, eliminating cross-session telemetry leakage, with an active session ID chip in the header.
+- **Worker Stepper Controls:** Replaced overflowing number input box with responsive stepper buttons (`[-] [ 4 ] [+]`) and global `box-sizing: border-box`.
+
+### Changed
+- Default manifest height reduced to 175px in `package.json`.
+- Updated Steering Protocol Specification to Schema v1.1.0 with `mode`, `requestedAt`, and extended telemetry support.
+- Updated Architecture and Operations runbooks to document tabbed ergonomics and autonomous steering workflows.
+
 ## [0.1.0] - 2026-11-18
 
 ### Added

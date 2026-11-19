@@ -15,85 +15,247 @@
         --mc-subtle: var(--oc-subtle, #f9fafb);
         --mc-primary: var(--oc-primary, #2563eb);
         --mc-primary-fg: var(--oc-primary-fg, #ffffff);
-        --mc-radius: var(--oc-radius, 8px);
+        --mc-radius: var(--oc-radius, 6px);
         --mc-font: var(--oc-font, system-ui, -apple-system, "Segoe UI", sans-serif);
         --mc-mono: var(--oc-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
         --mc-success: #10b981;
         --mc-warning: #f59e0b;
         --mc-danger: #ef4444;
+        --mc-accent: #8b5cf6;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
       }
 
       html, body {
         margin: 0;
         padding: 0;
         font-family: var(--mc-font);
-        font-size: 12px;
-        line-height: 1.45;
+        font-size: 11px;
+        line-height: 1.35;
         color: var(--mc-fg);
         background: transparent;
+        overflow-x: hidden;
       }
 
       #root {
-        padding: 4px;
+        padding: 2px 4px 6px;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 5px;
+        width: 100%;
+        max-width: 100%;
       }
 
-      .section {
+      /* Compact Top Header Bar */
+      .mc-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px 4px;
+        border-bottom: 1px solid var(--mc-border);
+      }
+
+      .mc-title-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        min-width: 0;
+      }
+
+      .mc-title {
+        font-weight: 700;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--mc-fg);
+        white-space: nowrap;
+      }
+
+      .session-chip {
+        font-family: var(--mc-mono);
+        font-size: 9.5px;
+        padding: 1px 4px;
+        background: var(--mc-hover);
+        border: 1px solid var(--mc-border);
+        border-radius: 3px;
+        color: var(--mc-muted);
+        max-width: 110px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .mc-actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+
+      .pulse-indicator {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 9px;
+        font-weight: 600;
+        color: var(--mc-muted);
+      }
+
+      .pulse-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--mc-success);
+      }
+
+      .pulse-dot.pulse {
+        animation: pulseAnimation 2s infinite ease-in-out;
+      }
+
+      .pulse-dot.inactive {
+        background-color: var(--mc-muted);
+        animation: none;
+      }
+
+      @keyframes pulseAnimation {
+        0% { transform: scale(0.9); opacity: 0.7; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.9); opacity: 0.7; }
+      }
+
+      .icon-btn {
+        background: var(--mc-hover);
+        border: 1px solid var(--mc-border);
+        border-radius: 3px;
+        padding: 2px 5px;
+        font-size: 10px;
+        cursor: pointer;
+        color: var(--mc-fg);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 120ms ease, transform 100ms ease;
+      }
+
+      .icon-btn:hover {
+        background: var(--mc-border);
+      }
+
+      .icon-btn:active {
+        transform: scale(0.95);
+      }
+
+      .icon-btn.spinning {
+        animation: spin 600ms linear infinite;
+      }
+
+      @keyframes spin {
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Segmented Navigation Tabs */
+      .mc-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background: var(--mc-hover);
+        border: 1px solid var(--mc-border);
+        border-radius: 5px;
+        padding: 2px;
+        gap: 2px;
+      }
+
+      .tab-btn {
+        background: transparent;
+        border: none;
+        border-radius: 3px;
+        padding: 3px 2px;
+        font-size: 9.5px;
+        font-weight: 600;
+        color: var(--mc-muted);
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        transition: background 150ms ease, color 150ms ease;
+      }
+
+      .tab-btn:hover {
+        color: var(--mc-fg);
+      }
+
+      .tab-btn.active {
+        background: var(--mc-bg);
+        color: var(--mc-primary);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Tab Content Sections */
+      .tab-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .tab-panel.hidden {
+        display: none !important;
+      }
+
+      /* Cards & Metric Grids */
+      .metric-card {
         background: var(--mc-subtle);
         border: 1px solid var(--mc-border);
         border-radius: var(--mc-radius);
-        padding: 8px 10px;
+        padding: 6px 8px;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 4px;
       }
 
-      .section-header {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--mc-muted);
-        border-bottom: 1px solid var(--mc-border);
-        padding-bottom: 3px;
-      }
-
-      /* Section 1: Monitoring */
-      .telemetry-grid {
+      .telemetry-row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
       }
 
-      .telemetry-item {
+      .telemetry-cell {
         display: flex;
         flex-direction: column;
         background: var(--mc-bg);
         border: 1px solid var(--mc-border);
-        border-radius: calc(var(--mc-radius) - 2px);
-        padding: 4px 6px;
+        border-radius: 4px;
+        padding: 3px 4px;
+        min-width: 0;
       }
 
-      .telemetry-item label {
-        font-size: 9px;
+      .telemetry-cell label {
+        font-size: 8.5px;
         color: var(--mc-muted);
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .badge {
         display: inline-block;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 11px;
+        padding: 1.5px 4px;
+        border-radius: 3px;
+        font-size: 10px;
         font-weight: 600;
         margin-top: 2px;
         text-align: center;
         background: var(--mc-hover);
         color: var(--mc-fg);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
+
+      .badge-mode-auto { background: #e0f2fe; color: #0284c7; }
+      .badge-mode-manual { background: #fef3c7; color: #d97706; }
 
       .phase-m0_explore { background: #dbeafe; color: #1e40af; }
       .phase-m1_propose { background: #e0e7ff; color: #3730a3; }
@@ -109,58 +271,156 @@
       .impact-t4 { background: #fbcfe8; color: #9d174d; }
       .impact-t5 { background: #fecaca; color: #991b1b; }
 
-      .pending-banner {
-        background: #fdf4ff;
-        border: 1px solid #f0abfc;
-        color: #86198f;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 10.5px;
-        font-weight: 600;
-      }
-
-      .hidden {
-        display: none !important;
-      }
-
-      .status-row {
-        font-size: 11px;
+      .status-line {
+        font-size: 10px;
         display: flex;
-        gap: 6px;
+        align-items: center;
+        gap: 5px;
         color: var(--mc-fg);
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-      .status-row label {
+
+      .status-line label {
         color: var(--mc-muted);
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 9px;
+        flex-shrink: 0;
       }
 
-      /* Section 2: Config */
-      .config-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+      .status-line span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
-      .config-item {
+      /* Progress Bar */
+      .progress-container {
         display: flex;
         flex-direction: column;
         gap: 2px;
       }
 
-      .config-item label {
-        font-size: 9px;
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8.5px;
         color: var(--mc-muted);
         font-weight: 600;
       }
 
-      .config-item select, .config-item input {
+      .progress-track {
+        height: 4px;
+        background: var(--mc-border);
+        border-radius: 2px;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--mc-primary);
+        width: 0%;
+        transition: width 300ms ease;
+      }
+
+      .progress-fill.green {
+        background: var(--mc-success);
+      }
+
+      /* Staged Handshake Banner */
+      .pending-banner {
+        background: #fdf4ff;
+        border: 1px solid #f0abfc;
+        color: #86198f;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 9.5px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* Section 2: Steering Controls */
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+
+      .form-group label {
+        font-size: 8.5px;
+        color: var(--mc-muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .form-group select,
+      .form-group input {
         background: var(--mc-bg);
         border: 1px solid var(--mc-border);
         border-radius: 4px;
         padding: 3px 4px;
         font: inherit;
-        font-size: 10.5px;
+        font-size: 10px;
         color: var(--mc-fg);
+        width: 100%;
+        min-width: 0;
+      }
+
+      .stepper-row {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        width: 100%;
+      }
+
+      .stepper-btn {
+        background: var(--mc-hover);
+        border: 1px solid var(--mc-border);
+        border-radius: 3px;
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        color: var(--mc-fg);
+        flex-shrink: 0;
+      }
+
+      .stepper-btn:hover {
+        background: var(--mc-border);
+      }
+
+      .stepper-input {
+        text-align: center;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .btn-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4px;
+        margin-top: 3px;
       }
 
       .primary-btn {
@@ -168,40 +428,106 @@
         color: var(--mc-primary-fg);
         border: none;
         border-radius: 4px;
-        padding: 5px 8px;
+        padding: 4px 8px;
         font: inherit;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 600;
         cursor: pointer;
-        margin-top: 4px;
-        transition: opacity 100ms ease;
+        text-align: center;
+        white-space: nowrap;
+        transition: opacity 120ms ease;
       }
+
       .primary-btn:hover { opacity: 0.9; }
       .primary-btn:active { transform: translateY(1px); }
 
-      /* Section 3: Launcher */
+      .secondary-btn {
+        background: var(--mc-hover);
+        border: 1px solid var(--mc-border);
+        color: var(--mc-fg);
+        border-radius: 4px;
+        padding: 4px 6px;
+        font: inherit;
+        font-size: 9.5px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 120ms ease;
+      }
+
+      .secondary-btn:hover { background: var(--mc-border); }
+
+      .danger-btn {
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #991b1b;
+        border-radius: 4px;
+        padding: 4px 6px;
+        font: inherit;
+        font-size: 9.5px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .danger-btn:hover { background: #fecaca; }
+
+      /* Section 3: Launcher Grids */
+      .launcher-section-title {
+        font-size: 8.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--mc-muted);
+        letter-spacing: 0.04em;
+        margin-top: 2px;
+      }
+
       .launcher-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
       }
 
       .launcher-btn {
         background: var(--mc-bg);
         border: 1px solid var(--mc-border);
         border-radius: 4px;
-        padding: 5px 8px;
+        padding: 4px 5px;
         font: inherit;
-        font-size: 10.5px;
+        font-size: 9.5px;
         font-weight: 600;
         color: var(--mc-fg);
         cursor: pointer;
         text-align: left;
-        transition: background 150ms ease, border-color 150ms ease;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;
+        transition: background 120ms ease, border-color 120ms ease;
       }
+
+      .launcher-btn span.name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .launcher-btn span.desc {
+        font-size: 8px;
+        font-weight: 400;
+        color: var(--mc-muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
       .launcher-btn:hover {
         background: var(--mc-hover);
         border-color: var(--mc-primary);
+      }
+
+      .hidden {
+        display: none !important;
       }
     </style>
   </head>

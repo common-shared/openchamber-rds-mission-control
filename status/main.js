@@ -1,11 +1,11 @@
 /* Built from status/main.ts */
 "use strict";
 (() => {
-  // node_modules/@openchamber/sdk/dist/api-version.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/api-version.js
   var OPENCHAMBER_SDK_CHANNEL = "openchamber.sdk";
   var OPENCHAMBER_SDK_API_VERSION = 1;
 
-  // node_modules/@openchamber/sdk/dist/scrollbar-style.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/scrollbar-style.js
   var GUEST_SCROLLING_ATTRIBUTE = "data-oc-scrolling";
   var GUEST_SCROLLBAR_CSS = `
 :root {
@@ -65,15 +65,15 @@
   }
   var GUEST_SCROLLBAR_SCRIPT = `(${installGuestScrollbarActivity.toString()})(document);`;
 
-  // node_modules/@openchamber/sdk/dist/workspace.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/workspace.js
   var GUEST_STORAGE_KEY_MAX = 128;
   var GUEST_STORAGE_VALUE_BYTES = 65536;
 
-  // node_modules/@openchamber/sdk/dist/shells.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/shells.js
   var GUEST_SHELL_ID_MAX = 128;
   var GUEST_SHELL_OUTPUT_TAIL_MAX = 65536;
 
-  // node_modules/@openchamber/sdk/dist/microphone.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/microphone.js
   var GUEST_MICROPHONE_SAMPLE_RATE_MIN = 8e3;
   var GUEST_MICROPHONE_SAMPLE_RATE_MAX = 192e3;
   var GUEST_MICROPHONE_OPEN_TIMEOUT_MS = 12e4;
@@ -119,7 +119,7 @@
     };
   };
 
-  // node_modules/@openchamber/sdk/dist/status-controls.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/status-controls.js
   var GUEST_STATUS_CONTROLS_MAX = 4;
   var GUEST_STATUS_CONTROL_ID = /^[a-z][a-z0-9-]{0,39}$/;
   var GUEST_STATUS_CONTROL_LABEL_MAX = 60;
@@ -162,12 +162,12 @@
     return true;
   };
 
-  // node_modules/@openchamber/sdk/dist/manifest.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/manifest.js
   var GUEST_PROVIDER_LOGO_BYTES_MAX = 1024 * 1024;
   var TRACKER_URL_TOKENS = ["{id}", "{segment}", "{segments+}"];
   var TRACKER_URL_TOKEN_SET = new Set(TRACKER_URL_TOKENS);
 
-  // node_modules/@openchamber/sdk/dist/session-events.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/session-events.js
   var GUEST_SESSION_EVENT_TYPES = [
     "turn-finished",
     "turn-failed",
@@ -181,11 +181,11 @@
   var SESSION_EVENTS_IDLE_MS = 10 * 6e4;
   var EVENT_TYPES = new Set(GUEST_SESSION_EVENT_TYPES);
 
-  // node_modules/@openchamber/sdk/dist/service-host.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-host.js
   var SERVICE_SCHEDULE_IDLE_MS = 10 * 6e4;
   var MENTIONS_IDLE_MS = 10 * 6e4;
 
-  // node_modules/@openchamber/sdk/dist/file-editor.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/file-editor.js
   var GUEST_FILE_EDITOR_CONTENT_MAX = 2e7;
   var GUEST_FILE_EDITOR_VERSION_MAX = 256;
   var fileEditorPayloadSize = (value) => "bytes" in value ? value.bytes.byteLength : value.content.length;
@@ -204,7 +204,7 @@
     return true;
   };
 
-  // node_modules/@openchamber/sdk/dist/popover.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/popover.js
   var GUEST_POPOVER_ID = /^[A-Za-z0-9_-]{1,80}$/;
   var GUEST_POPOVER_COORDINATE_MAX = 1e5;
   var GUEST_POPOVER_WIDTH_MIN = 160;
@@ -247,7 +247,7 @@
     }
   };
 
-  // node_modules/@openchamber/sdk/dist/contract.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/contract.js
   var GUEST_BLOCK_ANSWER_MAX = 2e3;
   var GUEST_FILE_STAT_KINDS = ["file", "directory", "other", "missing"];
   var isStartSessionResult = (value) => Boolean(value && "sessionId" in value);
@@ -466,7 +466,7 @@
     return wire;
   };
 
-  // node_modules/@openchamber/sdk/dist/host.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/host.js
   var isKeyEvent = (event) => "key" in event && "metaKey" in event && "ctrlKey" in event;
   var isSaveShortcut = (event) => (event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && event.key.toLowerCase() === "s";
   var HostRequestError = class extends Error {
@@ -1552,7 +1552,7 @@
     };
   };
 
-  // node_modules/@openchamber/sdk/dist/service-providers.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-providers.js
   var BROWSER_CONTROL_ACTIONS = [
     "browser.open",
     "browser.snapshot",
@@ -1574,11 +1574,11 @@
   var TRACKER_PROVIDER_IDLE_MS = 10 * 6e4;
   var QUOTA_PROVIDER_IDLE_MS = 10 * 6e4;
 
-  // node_modules/@openchamber/sdk/dist/service-surface.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/service-surface.js
   var SURFACE_CONTROLLERS = ["none", "agent", "user"];
   var CONTROLLERS = new Set(SURFACE_CONTROLLERS);
 
-  // node_modules/@openchamber/sdk/dist/ui/theme.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/ui/theme.js
   var TOKEN_VARS = [
     ["--oc-bg", "background"],
     ["--oc-elevated", "elevated"],
@@ -1668,7 +1668,7 @@
     }
   };
 
-  // node_modules/@openchamber/sdk/dist/ui/style.js
+  // ../../openchamber-rds-mission-control/node_modules/@openchamber/sdk/dist/ui/style.js
   var OC_ALIAS = {
     "surface-background": "bg",
     "surface-elevated": "elevated",
@@ -1981,130 +1981,450 @@ ${GUEST_UI_LOOK_CSS}`;
 
   // shared/store.ts
   var storePath = (sessionId2) => `.openchamber/rds-mission-control/${sessionId2}.json`;
-  var INITIAL_DOC = {
-    revision: 0,
-    active: {
-      phase: "M0_EXPLORE",
-      impact: "T0_INFORMATIONAL",
-      gear: 1
-    },
-    concurrency: {
-      global: 4
-    },
-    status: {
-      state: "idle",
-      detail: "Waiting for prompt..."
-    },
-    lastUpdated: Date.now()
-  };
+  function createInitialDoc(sessionId2) {
+    return {
+      sessionId: sessionId2,
+      revision: 0,
+      active: {
+        phase: "M0_EXPLORE",
+        impact: "T0_INFORMATIONAL",
+        gear: 1,
+        mode: "AUTO",
+        rdsStatus: "ENFORCED"
+      },
+      concurrency: {
+        global: 4,
+        auto: true
+      },
+      status: {
+        state: "idle",
+        detail: "Ready \u2022 Autonomous agent steering active",
+        activity: "idle"
+      },
+      lastUpdated: Date.now()
+    };
+  }
+  var INITIAL_DOC = createInitialDoc();
 
   // status/card.ts
   function createCard(root2, handlers) {
+    let activeTab = "monitor";
     root2.innerHTML = `
-    <div id="rds-monitor" class="section">
-      <div class="section-header">\u{1F4E1} MONITORING (READ-ONLY)</div>
-      <div class="telemetry-grid">
-        <div class="telemetry-item">
-          <label>PHASE</label>
-          <div id="val-phase" class="badge">---</div>
-        </div>
-        <div class="telemetry-item">
-          <label>IMPACT</label>
-          <div id="val-impact" class="badge">---</div>
-        </div>
-        <div class="telemetry-item">
-          <label>GEAR</label>
-          <div id="val-gear" class="badge">---</div>
-        </div>
+    <!-- Top Header -->
+    <div class="mc-header">
+      <div class="mc-title-group">
+        <span class="mc-title">\u{1F4E1} RDS Mission Control</span>
+        <span id="session-chip" class="session-chip">#no-session</span>
       </div>
-      <div id="pending-banner" class="pending-banner hidden">
-        \u26A0\uFE0F STAGED: <span id="pending-text"></span> (Applied next turn)
-      </div>
-      <div class="status-row">
-        <label>STATUS:</label>
-        <span id="val-status">Idle</span>
+      <div class="mc-actions">
+        <div id="pulse-indicator" class="pulse-indicator">
+          <span id="pulse-dot" class="pulse-dot pulse"></span>
+          <span id="pulse-text">LIVE</span>
+        </div>
+        <button id="btn-refresh" class="icon-btn" title="Refresh Telemetry">\u{1F504}</button>
       </div>
     </div>
 
-    <div id="rds-config" class="section">
-      <div class="section-header">\u2699\uFE0F CONFIGURATION (STEERING)</div>
-      <div class="config-grid">
-        <div class="config-item">
-          <label>GEAR</label>
-          <select id="select-gear">
-            <option value="1">Gear 1: Manual</option>
-            <option value="2">Gear 2: Interactive</option>
-            <option value="3" selected>Gear 3: Supervised</option>
-            <option value="4">Gear 4: Headless</option>
-          </select>
-        </div>
-        <div class="config-item">
-          <label>IMPACT</label>
-          <select id="select-impact">
-            <option value="T0_INFORMATIONAL">T0: Info</option>
-            <option value="T1_READ_ONLY_REPO">T1: Read-Only</option>
-            <option value="T2_SMALL_CHANGE">T2: Small Fix</option>
-            <option value="T3_FEATURE_CHANGE" selected>T3: Feature</option>
-            <option value="T4_MULTI_PHASE">T4: Programme</option>
-            <option value="T5_OPERATIONAL_SENSITIVE">T5: Sensitive</option>
-          </select>
-        </div>
-        <div class="config-item">
-          <label>PARALLEL</label>
-          <input type="number" id="input-concurrency" min="1" max="16" value="4">
-        </div>
-      </div>
-      <button id="btn-apply" class="primary-btn">Stage Changes for Next Turn</button>
+    <!-- Segmented Navigation -->
+    <div class="mc-nav">
+      <button class="tab-btn active" data-tab="monitor">\u{1F4E1} Monitor</button>
+      <button class="tab-btn" data-tab="steering">\u2699\uFE0F Steering</button>
+      <button class="tab-btn" data-tab="launcher">\u{1F680} Launch</button>
     </div>
 
-    <div id="rds-launcher" class="section">
-      <div class="section-header">\u{1F680} SESSION LAUNCHER (STAGING)</div>
-      <div class="launcher-grid">
-        <button class="launcher-btn" data-phase="M0_EXPLORE">\u{1F9E0} M0_EXPLORE</button>
-        <button class="launcher-btn" data-phase="M1_PROPOSE">\u{1F4DD} M1_PROPOSE</button>
-        <button class="launcher-btn" data-phase="M3_EXECUTE">\u26A1 M3_EXECUTE</button>
-        <button class="launcher-btn" data-phase="M4_AUDIT">\u{1F50D} M4_AUDIT</button>
+    <!-- TAB 1: MONITORING -->
+    <div id="panel-monitor" class="tab-panel">
+      <div class="metric-card">
+        <div class="telemetry-row">
+          <div class="telemetry-cell">
+            <label>PHASE</label>
+            <div id="val-phase" class="badge">---</div>
+          </div>
+          <div class="telemetry-cell">
+            <label>IMPACT</label>
+            <div id="val-impact" class="badge">---</div>
+          </div>
+          <div class="telemetry-cell">
+            <label>GEAR</label>
+            <div id="val-gear" class="badge">---</div>
+          </div>
+        </div>
+
+        <div class="telemetry-row">
+          <div class="telemetry-cell">
+            <label>RDS STATUS</label>
+            <div id="val-rds" class="badge">ENFORCED</div>
+          </div>
+          <div class="telemetry-cell">
+            <label>BRANCH</label>
+            <div id="val-branch" class="badge" title="Active Branch">dev</div>
+          </div>
+          <div class="telemetry-cell">
+            <label>CONTEXT</label>
+            <div id="val-context" class="badge" title="Tokens used / limit">-- / --</div>
+          </div>
+        </div>
+
+        <div id="pending-banner" class="pending-banner hidden">
+          <span>\u26A0\uFE0F STAGED:</span>
+          <span id="pending-text" style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+        </div>
+
+        <div class="status-line">
+          <label>ACTIVITY:</label>
+          <span id="val-activity">Idle</span>
+        </div>
+
+        <div id="progress-container" class="progress-container">
+          <div class="progress-header">
+            <span>Actions Progress</span>
+            <span id="progress-ratio">0/0 done</span>
+          </div>
+          <div class="progress-track">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: STEERING -->
+    <div id="panel-steering" class="tab-panel hidden">
+      <div class="metric-card">
+        <div class="status-line" style="margin-bottom: 2px;">
+          <label>MODE:</label>
+          <span id="steering-mode-badge" class="badge badge-mode-auto">\u{1F916} AUTO (Agent Decides)</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>GEAR</label>
+            <select id="select-gear">
+              <option value="AUTO" selected>\u{1F916} Auto (Agent)</option>
+              <option value="1">Gear 1: Manual Step</option>
+              <option value="2">Gear 2: Interactive</option>
+              <option value="3">Gear 3: Supervised</option>
+              <option value="4">Gear 4: Headless</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>IMPACT</label>
+            <select id="select-impact">
+              <option value="AUTO" selected>\u{1F916} Auto (Agent)</option>
+              <option value="T0_INFORMATIONAL">T0: Info</option>
+              <option value="T1_READ_ONLY_REPO">T1: Read-Only</option>
+              <option value="T2_SMALL_CHANGE">T2: Small Fix</option>
+              <option value="T3_FEATURE_CHANGE">T3: Feature</option>
+              <option value="T4_MULTI_PHASE">T4: Programme</option>
+              <option value="T5_OPERATIONAL_SENSITIVE">T5: Sensitive</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>PHASE REDIRECT</label>
+            <select id="select-phase">
+              <option value="AUTO" selected>\u{1F916} Auto (Current)</option>
+              <option value="M0_EXPLORE">M0: Explore</option>
+              <option value="M1_PROPOSE">M1: Propose</option>
+              <option value="M2_STAGE">M2: Stage</option>
+              <option value="M3_EXECUTE">M3: Execute</option>
+              <option value="M4_AUDIT">M4: Audit</option>
+              <option value="M5_SENSITIVE">M5: Sensitive</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>WORKERS</label>
+            <div class="stepper-row">
+              <button id="btn-concurrency-minus" class="stepper-btn">-</button>
+              <input type="number" id="input-concurrency" class="stepper-input" min="1" max="16" value="4">
+              <button id="btn-concurrency-plus" class="stepper-btn">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button id="btn-apply" class="primary-btn">Stage for Next Turn</button>
+          <div style="display: flex; gap: 3px;">
+            <button id="btn-reset-auto" class="secondary-btn" title="Revert to autonomous agent decision">\u21A9\uFE0F Auto</button>
+            <button id="btn-hold" class="danger-btn" title="Intercept & switch to Gear 1 immediately">\u{1F6D1} Hold</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: LAUNCHER -->
+    <div id="panel-launcher" class="tab-panel hidden">
+      <div class="metric-card">
+        <div class="launcher-section-title">Cognitive Archetypes (M0\u2013M5)</div>
+        <div class="launcher-grid">
+          <button class="launcher-btn" data-phase="M0_EXPLORE">
+            <span class="name">\u{1F9E0} M0_EXPLORE</span>
+            <span class="desc">Socratic trade-offs</span>
+          </button>
+          <button class="launcher-btn" data-phase="M1_PROPOSE">
+            <span class="name">\u{1F4DD} M1_PROPOSE</span>
+            <span class="desc">OpenSpec proposals</span>
+          </button>
+          <button class="launcher-btn" data-phase="M2_STAGE">
+            <span class="name">\u{1F4CB} M2_STAGE</span>
+            <span class="desc">Milestone staging</span>
+          </button>
+          <button class="launcher-btn" data-phase="M3_EXECUTE">
+            <span class="name">\u26A1 M3_EXECUTE</span>
+            <span class="desc">Worktree build & test</span>
+          </button>
+          <button class="launcher-btn" data-phase="M4_AUDIT">
+            <span class="name">\u{1F50D} M4_AUDIT</span>
+            <span class="desc">Fleet drift & health</span>
+          </button>
+          <button class="launcher-btn" data-phase="M5_SENSITIVE">
+            <span class="name">\u{1F510} M5_SENSITIVE</span>
+            <span class="desc">Infra & auth gates</span>
+          </button>
+        </div>
+
+        <div class="launcher-section-title">Quick Presets</div>
+        <div class="launcher-grid">
+          <button class="launcher-btn quick-preset" data-preset="t2-bugfix">
+            <span class="name">\u{1F6E0}\uFE0F T2 Bugfix</span>
+            <span class="desc">Bounded quick fix</span>
+          </button>
+          <button class="launcher-btn quick-preset" data-preset="nyquist-tests">
+            <span class="name">\u{1F9EA} Nyquist Tests</span>
+            <span class="desc">Coverage diff sweep</span>
+          </button>
+          <button class="launcher-btn quick-preset" data-preset="rds-doctor">
+            <span class="name">\u{1FA7A} RDS Doctor</span>
+            <span class="desc">Audit documentation</span>
+          </button>
+          <button class="launcher-btn quick-preset" data-preset="session-wrapup">
+            <span class="name">\u{1F4E6} As-Built Wrapup</span>
+            <span class="desc">Reconciliation loop</span>
+          </button>
+        </div>
       </div>
     </div>
   `;
+    function notifyHeight() {
+      const height = Math.min(Math.max(root2.scrollHeight + 8, 120), 480);
+      handlers.onTabChange?.(activeTab, height);
+    }
+    const navButtons = root2.querySelectorAll(".tab-btn");
+    const panels = {
+      monitor: root2.querySelector("#panel-monitor"),
+      steering: root2.querySelector("#panel-steering"),
+      launcher: root2.querySelector("#panel-launcher")
+    };
+    navButtons.forEach((btn) => {
+      btn.onclick = () => {
+        const tab = btn.getAttribute("data-tab");
+        if (tab === activeTab) return;
+        activeTab = tab;
+        navButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        Object.entries(panels).forEach(([name, panel]) => {
+          if (name === tab) {
+            panel.classList.remove("hidden");
+          } else {
+            panel.classList.add("hidden");
+          }
+        });
+        notifyHeight();
+      };
+    });
+    const btnRefresh = root2.querySelector("#btn-refresh");
+    btnRefresh.onclick = () => {
+      btnRefresh.classList.add("spinning");
+      handlers.onRefresh();
+      setTimeout(() => {
+        btnRefresh.classList.remove("spinning");
+      }, 600);
+    };
+    const inputConcurrency = root2.querySelector("#input-concurrency");
+    const btnMinus = root2.querySelector("#btn-concurrency-minus");
+    const btnPlus = root2.querySelector("#btn-concurrency-plus");
+    btnMinus.onclick = () => {
+      const val = Math.max(parseInt(inputConcurrency.value || "1", 10) - 1, 1);
+      inputConcurrency.value = String(val);
+    };
+    btnPlus.onclick = () => {
+      const val = Math.min(parseInt(inputConcurrency.value || "4", 10) + 1, 16);
+      inputConcurrency.value = String(val);
+    };
     const btnApply = root2.querySelector("#btn-apply");
     btnApply.onclick = () => {
-      const gear = parseInt(root2.querySelector("#select-gear").value);
-      const impact = root2.querySelector("#select-impact").value;
-      const concurrency = parseInt(root2.querySelector("#input-concurrency").value);
-      handlers.onStageChange({ gear, impact, concurrency });
+      const gearRaw = root2.querySelector("#select-gear").value;
+      const impactRaw = root2.querySelector("#select-impact").value;
+      const phaseRaw = root2.querySelector("#select-phase").value;
+      const concurrency = parseInt(inputConcurrency.value, 10);
+      const isAuto = gearRaw === "AUTO" && impactRaw === "AUTO" && phaseRaw === "AUTO";
+      handlers.onStageChange({
+        gear: gearRaw === "AUTO" ? "AUTO" : parseInt(gearRaw, 10),
+        impact: impactRaw === "AUTO" ? "AUTO" : impactRaw,
+        phase: phaseRaw === "AUTO" ? "AUTO" : phaseRaw,
+        concurrency: isNaN(concurrency) ? 4 : concurrency,
+        mode: isAuto ? "AUTO" : "MANUAL"
+      });
     };
-    root2.querySelectorAll(".launcher-btn").forEach((btn) => {
+    const btnResetAuto = root2.querySelector("#btn-reset-auto");
+    btnResetAuto.onclick = () => {
+      root2.querySelector("#select-gear").value = "AUTO";
+      root2.querySelector("#select-impact").value = "AUTO";
+      root2.querySelector("#select-phase").value = "AUTO";
+      inputConcurrency.value = "4";
+      handlers.onResetAuto();
+    };
+    const btnHold = root2.querySelector("#btn-hold");
+    btnHold.onclick = () => {
+      root2.querySelector("#select-gear").value = "1";
+      handlers.onStageChange({
+        gear: 1,
+        mode: "MANUAL"
+      });
+    };
+    root2.querySelectorAll(".launcher-btn[data-phase]").forEach((btn) => {
       btn.onclick = () => {
         const phase = btn.getAttribute("data-phase");
         handlers.onLaunchSession(phase);
       };
     });
+    root2.querySelectorAll(".quick-preset").forEach((btn) => {
+      btn.onclick = () => {
+        const preset = btn.getAttribute("data-preset");
+        switch (preset) {
+          case "t2-bugfix":
+            handlers.onLaunchSession(
+              "M3_EXECUTE",
+              `[M3_EXECUTE / T2_SMALL_CHANGE / Gear 2]
+Goal: Implement bounded bugfix for [ISSUE_DESCRIPTION].
+Directives: Worktree isolated, verify unit tests, push immediately to origin.`
+            );
+            break;
+          case "nyquist-tests":
+            handlers.onLaunchSession(
+              "M3_EXECUTE",
+              `[M3_EXECUTE / T2_SMALL_CHANGE / Gear 2]
+Goal: Run NYQUIST test gap audit and generate diff-driven tests for recent changes.
+Directives: TDD Plan-Driven Testing & Diff-Driven Coverage Sweeps (DP-0005).`
+            );
+            break;
+          case "rds-doctor":
+            handlers.onLaunchSession(
+              "M4_AUDIT",
+              `[M4_AUDIT / T1_READ_ONLY_REPO / Gear 2]
+Goal: Run full repository document & fleet drift audit.
+Directives: Execute rds doctor --fleet, rds drift, and rds validate.`
+            );
+            break;
+          case "session-wrapup":
+            handlers.onLaunchSession(
+              "M4_AUDIT",
+              `[M4_AUDIT / T2_SMALL_CHANGE / Gear 2]
+Goal: Execute session wrapup and as-built reconciliation protocol.
+Directives: Session Wrapup Protocol & As-Built Reconciliation Loop (DP-0008).`
+            );
+            break;
+        }
+      };
+    });
     return {
-      update(doc) {
+      getActiveTab() {
+        return activeTab;
+      },
+      update(doc, sessionContext) {
         if (!doc) return;
-        root2.querySelector("#val-phase").textContent = doc.active.phase;
-        root2.querySelector("#val-impact").textContent = doc.active.impact.split("_")[0];
-        root2.querySelector("#val-gear").textContent = `Gear ${doc.active.gear}`;
-        root2.querySelector("#val-status").textContent = doc.status.detail || doc.status.state;
-        root2.querySelector("#val-phase").className = `badge phase-${doc.active.phase.toLowerCase()}`;
-        root2.querySelector("#val-impact").className = `badge impact-${doc.active.impact.toLowerCase().split("_")[0]}`;
+        const sessionChip = root2.querySelector("#session-chip");
+        if (sessionContext?.id) {
+          const shortId = sessionContext.id.slice(0, 10);
+          sessionChip.textContent = `#${shortId}`;
+          sessionChip.setAttribute("title", `Session: ${sessionContext.title || sessionContext.id}`);
+        } else {
+          sessionChip.textContent = "#no-session";
+          sessionChip.setAttribute("title", "No active session");
+        }
+        const phaseBadge = root2.querySelector("#val-phase");
+        const impactBadge = root2.querySelector("#val-impact");
+        const gearBadge = root2.querySelector("#val-gear");
+        const rdsBadge = root2.querySelector("#val-rds");
+        const branchBadge = root2.querySelector("#val-branch");
+        const contextBadge = root2.querySelector("#val-context");
+        phaseBadge.textContent = doc.active.phase;
+        phaseBadge.className = `badge phase-${doc.active.phase.toLowerCase()}`;
+        impactBadge.textContent = doc.active.impact.split("_")[0];
+        impactBadge.className = `badge impact-${doc.active.impact.toLowerCase().split("_")[0]}`;
+        const isDocAuto = doc.active.mode === "AUTO";
+        gearBadge.textContent = `Gear ${doc.active.gear}${isDocAuto ? " [AUTO]" : ""}`;
+        rdsBadge.textContent = doc.active.rdsStatus || "ENFORCED";
+        branchBadge.textContent = doc.active.branch || "dev";
+        if (doc.active.branch) {
+          branchBadge.setAttribute("title", `Git Branch: ${doc.active.branch}`);
+        }
+        if (doc.active.contextTokens) {
+          const { used, limit } = doc.active.contextTokens;
+          const usedK = Math.round(used / 1e3);
+          const limitK = Math.round(limit / 1e3);
+          contextBadge.textContent = `${usedK}k / ${limitK}k`;
+        } else {
+          contextBadge.textContent = "-- / --";
+        }
+        const activitySpan = root2.querySelector("#val-activity");
+        const toolInfo = doc.active.activeTool ? `${doc.active.activeTool.name} ${doc.active.activeTool.target || ""}` : null;
+        const detailText = doc.status.detail || doc.status.state || "Idle";
+        activitySpan.textContent = toolInfo ? `\u26A1 ${toolInfo}` : detailText;
+        activitySpan.setAttribute("title", detailText);
+        const progressRatio = root2.querySelector("#progress-ratio");
+        const progressFill = root2.querySelector("#progress-fill");
+        if (doc.active.focusProgress && doc.active.focusProgress.total > 0) {
+          const { done, total, percentage } = doc.active.focusProgress;
+          progressRatio.textContent = `${done}/${total} done (${percentage}%)`;
+          progressFill.style.width = `${Math.min(Math.max(percentage, 0), 100)}%`;
+          if (percentage >= 100) {
+            progressFill.classList.add("green");
+          } else {
+            progressFill.classList.remove("green");
+          }
+        } else {
+          progressRatio.textContent = "0/0 done";
+          progressFill.style.width = "0%";
+        }
         const pendingBanner = root2.querySelector("#pending-banner");
-        if (doc.pending && Object.keys(doc.pending).length > 0) {
+        if (doc.pending && doc.pending.status === "PENDING_NEXT_TURN") {
           pendingBanner.classList.remove("hidden");
           const parts = [];
+          if (doc.pending.mode) parts.push(`Mode: ${doc.pending.mode}`);
           if (doc.pending.phase) parts.push(`Phase: ${doc.pending.phase}`);
           if (doc.pending.impact) parts.push(`Impact: ${doc.pending.impact}`);
           if (doc.pending.gear) parts.push(`Gear: ${doc.pending.gear}`);
+          if (doc.pending.concurrency) parts.push(`Workers: ${doc.pending.concurrency}`);
           root2.querySelector("#pending-text").textContent = parts.join(", ");
         } else {
           pendingBanner.classList.add("hidden");
         }
-        if (document.activeElement?.tagName !== "SELECT" && document.activeElement?.tagName !== "INPUT") {
-          root2.querySelector("#select-gear").value = String(doc.active.gear);
-          root2.querySelector("#select-impact").value = doc.active.impact;
-          root2.querySelector("#input-concurrency").value = String(doc.concurrency.local || doc.concurrency.global);
+        const modeBadge = root2.querySelector("#steering-mode-badge");
+        if (isDocAuto) {
+          modeBadge.textContent = "\u{1F916} AUTO (Agent Decides)";
+          modeBadge.className = "badge badge-mode-auto";
+        } else {
+          modeBadge.textContent = "\u{1F464} MANUAL (Operator Overridden)";
+          modeBadge.className = "badge badge-mode-manual";
         }
+        if (document.activeElement?.tagName !== "SELECT" && document.activeElement?.tagName !== "INPUT") {
+          const selectGear = root2.querySelector("#select-gear");
+          const selectImpact = root2.querySelector("#select-impact");
+          const selectPhase = root2.querySelector("#select-phase");
+          if (isDocAuto) {
+            selectGear.value = "AUTO";
+            selectImpact.value = "AUTO";
+            selectPhase.value = "AUTO";
+          } else {
+            selectGear.value = String(doc.active.gear);
+            selectImpact.value = doc.active.impact;
+            selectPhase.value = doc.active.phase;
+          }
+          inputConcurrency.value = String(doc.concurrency.local || doc.concurrency.global || 4);
+        }
+        notifyHeight();
       }
     };
   }
@@ -2113,7 +2433,9 @@ ${GUEST_UI_LOOK_CSS}`;
   var host = connectHost();
   var root = document.querySelector("#root");
   var sessionId = null;
-  var currentDoc = INITIAL_DOC;
+  var sessionTitle = null;
+  var currentDoc = createInitialDoc();
+  var sessionDocCache = /* @__PURE__ */ new Map();
   var PROMPT_TEMPLATES = {
     M0_EXPLORE: `[M0_EXPLORE / T0_INFORMATIONAL / Gear 1]
 Goal: Brainstorm and explore alternatives for [TOPIC].
@@ -2134,48 +2456,139 @@ Directives: Run rds doctor --fleet, rds drift, and rds validate.`,
 Goal: Execute sensitive operational task for [TARGET].
 Rules: Native Question tool authorization gate before touching credentials or infrastructure.`
   };
+  async function probeGitBranch() {
+    try {
+      const res = await host.readFile(".git");
+      if (res.content.startsWith("gitdir:")) {
+        const parts = res.content.trim().split("/");
+        const worktreeName = parts[parts.length - 1] || "worktree";
+        return { branch: worktreeName, isWorktree: true };
+      }
+    } catch {
+    }
+    try {
+      const headRes = await host.readFile(".git/HEAD");
+      const line = headRes.content.trim();
+      if (line.startsWith("ref: refs/heads/")) {
+        return { branch: line.replace("ref: refs/heads/", ""), isWorktree: false };
+      }
+      return { branch: line.slice(0, 8), isWorktree: false };
+    } catch {
+      return { branch: "dev", isWorktree: false };
+    }
+  }
+  async function probeFocusProgress() {
+    try {
+      const res = await host.readFile(".planning/STATE.md");
+      const matches = res.content.match(/- \[(x|X| )\]/g);
+      if (matches && matches.length > 0) {
+        const total = matches.length;
+        const done = matches.filter((m) => m.toLowerCase().includes("x")).length;
+        return {
+          done,
+          total,
+          percentage: Math.round(done / total * 100)
+        };
+      }
+    } catch {
+    }
+    return void 0;
+  }
   async function readStore() {
-    if (!sessionId) return INITIAL_DOC;
+    if (!sessionId) {
+      return createInitialDoc();
+    }
     try {
       const res = await host.readFile(storePath(sessionId));
-      return JSON.parse(res.content);
+      const parsed = JSON.parse(res.content);
+      sessionDocCache.set(sessionId, parsed);
+      return parsed;
     } catch (err) {
       if (err instanceof HostRequestError && err.code === "NOT_FOUND") {
-        return INITIAL_DOC;
+        if (sessionDocCache.has(sessionId)) {
+          return sessionDocCache.get(sessionId);
+        }
+        const freshDoc = createInitialDoc(sessionId);
+        sessionDocCache.set(sessionId, freshDoc);
+        return freshDoc;
       }
-      return INITIAL_DOC;
+      return sessionDocCache.get(sessionId) || createInitialDoc(sessionId);
     }
   }
   async function writeStore(doc) {
     if (!sessionId) return;
+    doc.sessionId = sessionId;
+    doc.lastUpdated = Date.now();
+    sessionDocCache.set(sessionId, doc);
     const content = JSON.stringify(doc, null, 2);
-    await host.writeFile(storePath(sessionId), content);
+    try {
+      await host.writeFile(storePath(sessionId), content);
+    } catch (err) {
+      console.warn("Could not persist Mission Control doc to disk:", err);
+    }
   }
   var card = createCard(root, {
     onStageChange(update) {
       void (async () => {
-        currentDoc.pending = {
-          ...currentDoc.pending,
-          ...update.phase ? { phase: update.phase } : {},
-          ...update.impact ? { impact: update.impact } : {},
-          ...update.gear ? { gear: update.gear } : {}
+        const pending = {
+          status: "PENDING_NEXT_TURN",
+          requestedAt: Date.now(),
+          mode: update.mode
         };
+        if (update.gear && update.gear !== "AUTO") {
+          pending.gear = update.gear;
+        }
+        if (update.impact && update.impact !== "AUTO") {
+          pending.impact = update.impact;
+        }
+        if (update.phase && update.phase !== "AUTO") {
+          pending.phase = update.phase;
+        }
         if (update.concurrency) {
+          pending.concurrency = update.concurrency;
           currentDoc.concurrency.local = update.concurrency;
+          currentDoc.concurrency.auto = false;
+        }
+        currentDoc.pending = pending;
+        if (update.mode) {
+          currentDoc.active.mode = update.mode;
         }
         currentDoc.revision++;
         currentDoc.lastUpdated = Date.now();
         await writeStore(currentDoc);
+        const parts = [];
+        if (pending.gear) parts.push(`Gear ${pending.gear}`);
+        if (pending.impact) parts.push(pending.impact.split("_")[0]);
+        if (pending.phase) parts.push(pending.phase);
         await host.toast({
           kind: "success",
-          message: `Staged: Gear ${update.gear ?? currentDoc.active.gear}, ${(update.impact ?? currentDoc.active.impact).split("_")[0]} (applies next turn)`
+          message: `Staged: ${parts.length > 0 ? parts.join(", ") : "Settings"} (applies next turn)`
         }).catch(() => void 0);
-        card.update(currentDoc);
+        card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
       })();
     },
-    onLaunchSession(phase) {
+    onResetAuto() {
       void (async () => {
-        const template = PROMPT_TEMPLATES[phase];
+        currentDoc.active.mode = "AUTO";
+        currentDoc.concurrency.auto = true;
+        currentDoc.pending = {
+          status: "PENDING_NEXT_TURN",
+          mode: "AUTO",
+          requestedAt: Date.now()
+        };
+        currentDoc.revision++;
+        currentDoc.lastUpdated = Date.now();
+        await writeStore(currentDoc);
+        await host.toast({
+          kind: "info",
+          message: "Reset to Autonomous Agent steering mode (Auto)"
+        }).catch(() => void 0);
+        card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
+      })();
+    },
+    onLaunchSession(phase, customTemplate) {
+      void (async () => {
+        const template = customTemplate || PROMPT_TEMPLATES[phase];
         try {
           await host.compose({
             text: template,
@@ -2183,36 +2596,94 @@ Rules: Native Question tool authorization gate before touching credentials or in
           });
           await host.toast({
             kind: "info",
-            message: `Staged ${phase} prompt in composer`
+            message: `Staged ${phase} prompt template in composer`
           }).catch(() => void 0);
         } catch (err) {
           console.error("Failed to compose prompt draft:", err);
         }
       })();
+    },
+    onRefresh() {
+      void refresh();
+    },
+    onTabChange(_tab, height) {
+      void host.setHeight(height).catch(() => void 0);
     }
   });
+  var isRefreshing = false;
   async function refresh() {
-    currentDoc = await readStore();
-    card.update(currentDoc);
+    if (isRefreshing) return;
+    isRefreshing = true;
+    try {
+      currentDoc = await readStore();
+      const gitInfo = await probeGitBranch();
+      currentDoc.active.branch = gitInfo.branch;
+      currentDoc.active.isWorktree = gitInfo.isWorktree;
+      const progress = await probeFocusProgress();
+      if (progress) {
+        currentDoc.active.focusProgress = progress;
+      }
+      card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
+    } finally {
+      isRefreshing = false;
+    }
   }
   var applySession = (session) => {
+    const previousId = sessionId;
     sessionId = session?.id ?? null;
+    sessionTitle = session?.title ?? null;
+    if (session) {
+      const extSession = session;
+      if (extSession.tool) {
+        currentDoc.active.activeTool = {
+          name: extSession.tool.name,
+          target: extSession.tool.target
+        };
+      }
+      if (extSession.activity) {
+        currentDoc.status.activity = extSession.activity;
+        if (extSession.activity === "running") {
+          currentDoc.status.detail = `Running: ${extSession.tool?.name || "tool"}`;
+        } else if (extSession.activity === "waiting-question") {
+          currentDoc.status.detail = "Awaiting Operator Decision";
+        }
+      } else if (session.busy) {
+        currentDoc.status.activity = "running";
+        currentDoc.status.detail = "Agent working...";
+      } else {
+        currentDoc.status.activity = "idle";
+        currentDoc.status.detail = "Ready \u2022 Awaiting prompt";
+      }
+      if (session.model) {
+        currentDoc.active.model = session.model;
+      }
+      if (extSession.context) {
+        currentDoc.active.contextTokens = {
+          used: extSession.context.tokens,
+          limit: extSession.context.limit
+        };
+      }
+    }
+    if (sessionId !== previousId) {
+      card.update(currentDoc, { id: sessionId, title: sessionTitle || void 0 });
+    }
     void refresh();
   };
   host.onReady((ctx) => {
     applyHostReady(ctx, document.documentElement);
     applySession(ctx.session);
+    void host.setHeight(175).catch(() => void 0);
   });
   host.onSession((session) => {
     applySession(session);
   });
   host.onSessionLifecycle((event) => {
-    if (event.phase === "completed") {
+    if (event.phase === "started" || event.phase === "completed") {
       void refresh();
     }
   });
   setInterval(() => {
     if (document.visibilityState === "hidden") return;
     void refresh();
-  }, 3e3);
+  }, 1500);
 })();

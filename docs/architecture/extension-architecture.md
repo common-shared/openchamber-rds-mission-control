@@ -3,9 +3,9 @@ title: "OpenChamber RDS Mission Control Desktop Extension Architecture"
 type: "architecture"
 status: "active"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 owner: "OpenChamber Platform Operations / Mission Control Team"
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # OpenChamber RDS Mission Control Desktop Extension Architecture
@@ -53,26 +53,31 @@ By decoupling Mission Control into its own repository:
 
 ## 3. Extension Layout & Section Design
 
-The extension contributes an OpenChamber desktop status section (`statusSection` in `package.json`) structured into three distinct ergonomic sections:
+The extension contributes an OpenChamber desktop status section (`statusSection` in `package.json`) structured as an ultra-compact tabbed interface with dynamic height resizing via `host.setHeight(height)`:
 
 ```text
 +-----------------------------------------------------------------------------------+
-|                        RDS MISSION CONTROL STATUS SECTION                         |
+|  📡 RDS MISSION CONTROL             [#ses_9a2b]      [🔄 Refresh]      [🟢 LIVE]  |
 +-----------------------------------------------------------------------------------+
-|  SECTION 1: LIVE TELEMETRY & MISSION MONITOR                                      |
-|  [ Cognitive Phase: M3_EXECUTE ]  [ Impact: T2_SMALL_CHANGE ]  [ Gear: 3 ]        |
-|  Progress: [████████████████████░░░░] 75% (3/4 actions done)                      |
-|  Active Workers: 2 / 4 Concurrency Ceiling                                        |
+|  [ 📡 MONITOR ]               [ ⚙️ STEERING ]               [ 🚀 LAUNCH ]         |
 +-----------------------------------------------------------------------------------+
-|  SECTION 2: TWO-PHASE TURN-BOUNDARY STEERING                                      |
-|  Gear Transmission Selector:  (1: Assist)  (2: Staged)  [3: Supervised]  (4: Head) |
-|  Parallel Worker Ceiling:     [---●------] 2 / 4                                  |
-|  Staged Changes: None (or "PENDING_NEXT_TURN: Gear 1")                            |
+|  TAB 1: LIVE TELEMETRY & MISSION MONITOR                                          |
+|  RDS: ENFORCED 🟢          Branch: worktrees/feat-robust 🌿  Context: 42k / 200k   |
+|  Phase: M3_EXECUTE ⚡       Impact: T2_SMALL 🟡               Gear: 3 [AUTO]       |
+|  Activity: ⚡ edit status/card.ts (Running)                                       |
+|  Progress: [████████████████████░░░░] 80% (4/5 actions completed)                 |
 +-----------------------------------------------------------------------------------+
-|  SECTION 3: INTELLIGENT SESSION LAUNCHER                                          |
-|  [ 🔍 Explore (M0) ]  [ 📝 Propose (M1) ]  [ 📋 Stage (M2) ]  [ ⚡ Execute (M3) ]   |
-|  [ 🛡️ Audit (M4) ]   [ 🔐 Sensitive (M5) ]                                        |
-|  Default Preset Model: pff-deep-auto / pff-vision-auto                            |
+|  TAB 2: TWO-PHASE TURN-BOUNDARY STEERING                                          |
+|  Mode: 🤖 AUTO (Agent Decides) • Manual Overrides Staged for Next Turn Boundary   |
+|  Gear: [ Auto ▾ ]     Impact: [ Auto ▾ ]     Phase: [ Auto ▾ ]                    |
+|  Parallel Worker Stepper: [-] [ 4 ] [+] Concurrency                               |
+|  [ Stage for Next Turn ]     [ ↩️ Reset to Auto ]     [ 🛑 Emergency Hold ]        |
++-----------------------------------------------------------------------------------+
+|  TAB 3: INTELLIGENT SESSION LAUNCHER                                              |
+|  Cognitive Archetypes:                                                            |
+|  [ 🧠 Explore (M0) ]   [ 📝 Propose (M1) ]   [ 📋 Stage (M2) ]                     |
+|  [ ⚡ Execute (M3) ]   [ 🔍 Audit (M4) ]     [ 🔐 Sensitive (M5) ]                 |
+|  Quick Presets: [ 🛠️ T2 Bugfix ] [ 🧪 Nyquist Tests ] [ 🩺 RDS Doctor ]            |
 +-----------------------------------------------------------------------------------+
 ```
 
@@ -80,17 +85,18 @@ The extension contributes an OpenChamber desktop status section (`statusSection`
 - Inspects active session telemetry via OpenChamber SDK file and session hooks.
 - Renders active Cognitive Phase (`M0` through `M5`) with color-coded status badges.
 - Displays current Task Impact Class (`T0` through `T5`) to indicate repository blast radius.
-- Shows current active Gear (1 to 4) and live concurrency level.
+- Shows RDS governance enrollment status, active Git branch / worktree guard, live active tool, token context meter, and action progress bar.
 
 ### 3.2 Section 2: Turn-Boundary Steering & Runtime Configuration
-- Provides interactive sliders and buttons for the human operator to modulate autonomy.
+- Provides interactive steppers and selectors for the human operator to modulate autonomy.
+- **Auto by Default:** Sessions initialize in `AUTO` mode where the autonomous agent determines its own Triad Inception state. Manual adjustments trigger a staged override.
 - Implements the strict two-phase atomic configuration handshake:
   - Phase 1: User click writes staged parameters to `.openchamber/rds-mission-control/<sessionId>.json` with status `PENDING_NEXT_TURN`.
   - Phase 2: Agent acknowledges at the start of the next turn (`turn:start`), applies the new configuration, and echoes an Operator Decision Record in chat.
 - Guarantees zero disruption to in-flight tools, uncommitted worktrees, or half-written files.
 
 ### 3.3 Section 3: Intelligent Session Launcher
-- Provides one-click presets for common agent workflow archetypes (M0 Explore, M1 Propose, M2 Stage, M3 Execute, M4 Audit, M5 Sensitive).
+- Provides one-click presets for all 6 cognitive workflow archetypes (M0 Explore, M1 Propose, M2 Stage, M3 Execute, M4 Audit, M5 Sensitive).
 - Pre-fills the OpenChamber desktop composer with standard RDS-compliant prompts and sets optimal model routing (`omniroute/pff-deep-auto` for deep logic, `omniroute/pff-vision-auto` for chart/vision tasks).
 - Never auto-dispatches without operator confirmation: drafts are loaded into the composer for review.
 

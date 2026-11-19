@@ -3,9 +3,9 @@ title: "OpenChamber RDS Mission Control Operational Runbook"
 type: "operations"
 status: "active"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 owner: "OpenChamber Platform Operations / Mission Control Team"
-version: "1.0.0"
+version: "1.1.0"
 ---
 
 # OpenChamber RDS Mission Control Operational Runbook
@@ -29,37 +29,37 @@ The **RDS Mission Control** extension integrates into OpenChamber Desktop as an 
    ```
 4. Approve the requested extension capabilities:
    - `files`: Read/write session steering JSON in `.openchamber/rds-mission-control/`.
-   - `sessions`: Query active session status and focus cards.
+   - `sessions`: Query active session status, focus progress, and tool activity.
    - `prompt`: Inject launch templates into composer.
    - `model`: Suggest optimal OmniRoute AI model profile.
-5. The extension panel will immediately render in the active workspace status bar.
+5. The extension panel renders in the active workspace status bar with compact tabbed ergonomics (~150px–175px).
 
 ---
 
 ## 2. Day-to-Day Operations & Steering Workflows
 
-### 2.1 Modulating Agent Autonomy (Steering Handshake)
-When an agent is running with high autonomy (e.g., Gear 3 or Gear 4) and you need to intervene:
-1. In Section 2 of the Mission Control panel, click **Gear 1 (Assist)**.
-2. The UI will stage the change as `PENDING_NEXT_TURN: Gear 1`.
-3. The running agent will finish its current atomic file or tool execution safely.
-4. When the agent reaches the next turn boundary (e.g. asking a Question or awaiting user response), it adopts Gear 1 and logs:
-   ```text
-   ┌─────────────────────────────────────────────────────────────────────────┐
-   │ 📋 OPERATOR DECISION RECORD                                             │
-   ├─────────────────────────────────────────────────────────────────────────┤
-   │ Question:       Runtime Steering Configuration Update                   │
-   │ Chosen Option:  Gear 1 (Assist - Manual Step-by-Step)                   │
-   │ Action Taken:   Switched execution transmission to Gear 1               │
-   └─────────────────────────────────────────────────────────────────────────┘
-   ```
-5. All subsequent actions require explicit step confirmation.
+### 2.1 Tabbed Navigation & Real-Time Monitoring
+The extension is partitioned into three ergonomic tabs:
+- **`📡 Monitor`**: Live HUD displaying Cognitive Phase (`M0`..`M5`), Impact Class (`T0`..`T5`), Gear (1..4), active Git branch/worktree, token context usage, live tool execution (`⚡ edit ...`), and focus action progress bar.
+- **`⚙️ Steering`**: Modulate autonomy settings, stage phase redirects, adjust parallel worker concurrency, or trigger emergency holds.
+- **`🚀 Launch`**: One-click prompt staging for all 6 cognitive archetypes and quick operational presets.
 
-### 2.2 Launching Staged Sessions
+Click the **`[🔄]` Refresh** button in the header at any time to force an immediate disk and SDK telemetry resynchronization.
+
+### 2.2 Modulating Agent Autonomy (Steering Handshake)
+By default, sessions run in **`🤖 AUTO`** mode where the coding agent determines its own Triad Inception state. When you need to intervene:
+1. In the **`⚙️ Steering`** tab, select the desired **Gear** (e.g., `Gear 1: Manual Step`), **Impact**, or **Phase Redirect**.
+2. Alternatively, click **`🛑 Hold`** to instantly intercept and stage Gear 1.
+3. Click **`Stage for Next Turn`**. The UI stages the change as `PENDING_NEXT_TURN`.
+4. The running agent finishes its current atomic tool execution safely.
+5. At the next turn boundary, the agent adopts the staged configuration and logs an Operator Decision Record.
+6. To return to autonomous agent decisions, click **`↩️ Auto`**.
+
+### 2.3 Launching Staged Sessions
 To start a new task cleanly:
-1. Navigate to Section 3 of the Mission Control panel.
-2. Select the desired workflow archetype (e.g., **M0 Explore** or **M3 Execute**).
-3. Mission Control pre-fills the composer with a structured Triad Inception prompt draft and sets the optimal OmniRoute model (`pff-deep-auto` or `pff-vision-auto`).
+1. Switch to the **`🚀 Launch`** tab.
+2. Select the desired workflow archetype (e.g., **`🧠 M0_EXPLORE`**, **`📋 M2_STAGE`**, **`⚡ M3_EXECUTE`**, **`🔐 M5_SENSITIVE`**) or a quick preset like **`🛠️ T2 Bugfix`**.
+3. Mission Control pre-fills the composer with a structured prompt draft and configures model routing.
 4. Review and adjust the prompt text before pressing Enter to launch.
 
 ---

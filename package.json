@@ -1,7 +1,7 @@
 {
   "name": "openchamber-rds-mission-control",
-  "version": "0.1.0",
-  "description": "RDS Mission Control: Monitor, Configure, and Launch RDS sessions with UDIS and Steerable Autonomy.",
+  "version": "0.2.0",
+  "description": "RDS Mission Control: Monitor, Configure, and Launch RDS sessions with UDIS, Steerable Autonomy, and Dynamic Ergonomics.",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -23,7 +23,7 @@
       "statusSection": {
         "entry": "status/index.html",
         "title": "RDS Mission Control",
-        "height": 400,
+        "height": 175,
         "defaultExpanded": true,
         "requiresProject": true
       },
