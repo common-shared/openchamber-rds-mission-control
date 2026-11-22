@@ -8,12 +8,30 @@ The canonical repository and Single Source of Truth (SSOT) for the **RDS Mission
 - **Section 3: Intelligent Session Launcher**: Pre-fills RDS-compliant session draft templates with optimal OmniRoute model presets (`pff-deep-auto`, `pff-vision-auto`) into the OpenChamber desktop composer.
 
 ## Governance & Repository Document Standard (RDS)
-This repository is enrolled in the Repository Document Standard (RDS) at version 0.8.5.
+This repository is enrolled in the Repository Document Standard (RDS) at version 0.8.6.
 All sessions are governed by the central standard at `common/rds`.
 - **Precedence Hierarchy:** Level 0 (Hard Safety) > Level 1 (Central RDS) > Level 2 (Global OpenCode) > Level 3 (Repo Contract) > Level 4 (Prompt).
 - **Domain Separation:** Enduring knowledge resides in `docs/`, pre-implementation specs in `openspec/`, and ephemeral agent execution state in `.planning/`.
 - **Validation:** Run `rds validate` or `/home/pbruser/.local/venvs/eval-harness/bin/python /home/pbruser/workspace/repos/common/rds/scripts/rds.py validate` before committing documentation changes.
 - **Worktree-Isolated Lifecycle:** Never commit directly on `dev` or `main`. All tasks must run in dedicated isolated worktrees and be merged into `dev`, tested, and pushed immediately to `origin`.
+
+## Mandatory Release Verification Invariant
+On every release, the clean installation, update, and release verification procedure MUST be executed on this repository and server before any release tag or publication:
+```bash
+npm run verify:release
+# Or: node scripts/installer.mjs verify-release
+# Or: ./scripts/install.sh verify-release
+```
+**Invariant Rules:**
+1. A release cannot be tagged, merged to `main`, or published if `verify:release` fails.
+2. The procedure enforces a clean-from-scratch install, full test suite pass (`npm run check`), OpenChamber registration and capability grant audit (`doctor`), and central RDS documentation validation (`rds validate`).
+3. Both human maintainers and autonomous AI agents MUST adhere to this invariant on every release.
+
+## Lifecycle Management & Installation Tooling
+- `scripts/installer.mjs`: Core Node.js lifecycle engine (`install`, `update`, `remove`, `doctor`, `run`, `verify-release`).
+- `bin/mission-control.mjs`: CLI executable wrapper (`openchamber-rds-mission-control`).
+- `scripts/install.sh`: Universal bash installer for workstations and raw Linux servers.
+- `package.json` scripts: `install:extension`, `update:extension`, `remove:extension`, `doctor`, `verify:release`.
 
 ## Repository Configuration
 - **Main Branch:** `main`

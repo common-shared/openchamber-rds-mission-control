@@ -1,0 +1,22 @@
+# Tasks: Deterministic Lifecycle Management & Release Verification
+
+- [x] 1. OpenSpec change proposal and specification contract <!-- id: 1 -->
+- [x] 2. GSD Phase Plan (`.planning/phases/01-lifecycle-management/01-PLAN.md`) <!-- id: 2 -->
+- [ ] 3. Implementation of `scripts/installer.mjs` <!-- id: 3 -->
+  - [ ] 3.1 Prerequisite verification (Node >= 20, npm, git, openchamber)
+  - [ ] 3.2 Clean-from-scratch build routine
+  - [ ] 3.3 Atomic `extensions.json` registration, capability grants, and scopes
+  - [ ] 3.4 Data directory initialization (`~/.openchamber/rds-mission-control/`)
+  - [ ] 3.5 Lifecycle commands (`install`, `update`, `remove`, `doctor`, `run`, `verify-release`)
+- [ ] 4. CLI Entrypoint `bin/mission-control.mjs` and executable permissions <!-- id: 4 -->
+- [ ] 5. Universal Raw Linux Bash Installer `scripts/install.sh` <!-- id: 5 -->
+- [ ] 6. Package configuration & scripts (`package.json`) <!-- id: 6 -->
+- [ ] 7. Automated Unit and Integration Tests (`tests/installer.test.ts`) <!-- id: 7 -->
+- [ ] 8. Enduring Documentation & Runbook Updates <!-- id: 8 -->
+  - [ ] 8.1 Operational Runbook (`docs/operations/extension-operations.md`)
+  - [ ] 8.2 Installation and Lifecycle Guide (`docs/operations/installation-and-lifecycle-guide.md`)
+  - [ ] 8.3 Architecture Decision Record (`docs/decisions/0002-deterministic-lifecycle-and-release-verification.md`)
+  - [ ] 8.4 Root `README.md` and `AGENTS.md` release verification rule
+  - [ ] 8.5 `CHANGELOG.md` for v0.3.0
+- [ ] 9. Execution of clean install and release verification on live server <!-- id: 9 -->
+- [ ] 10. Merge worktree to dev, tag v0.3.0, and push to origin <!-- id: 10 -->
