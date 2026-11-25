@@ -1,6 +1,6 @@
 {
   "$schema": ".claude/skills/repository-documentation/schemas/consumer-config.schema.json",
-  "rds_version": "0.8.6",
+  "rds_version": "0.8.9",
   "opt_in": true,
   "enabled_types": [
     "architecture",
